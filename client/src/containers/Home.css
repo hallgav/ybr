@@ -1,0 +1,46 @@
+.Home {
+  text-align: left;
+}
+
+.Home-logo {
+  height: 5vmin;
+}
+
+.Home-header {
+  background-color: #282c34;
+  min-height: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  font-size: calc(10px + .5vmin);
+  color: white;
+  padding-left: 1rem;
+}
+
+.Home-body {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+
+.Home-body__recent {
+  align-items: left;
+  justify-content: center;
+  font-size: calc(10px + .5vmin);
+  color: slategrey;
+  padding-left: 1rem;
+}
+
+.Home-body__favourite {
+  align-items: left;
+  justify-content: center;
+  font-size: calc(10px + .5vmin);
+  color: slategrey;
+  padding-left: 1rem;
+}
+
+.Home-link {
+  color: #09d3ac;
+}
