@@ -49,7 +49,13 @@ const SideMenu = props => (
           </li>
         </ul>
       </div>
-
+      <div className="ybr-panel">
+          <p>ASSETS</p>
+          <ul>
+            <li>Servers</li>
+            <li>Applications</li>
+          </ul>
+        </div>
       <div className="side-menu__content">
         <Switch>
           {routes.map((route, index) => (

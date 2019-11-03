@@ -19,8 +19,13 @@
 .side-menu__pannel li {
   padding: 0 0.5rem;
 }
-
-.side-menu__content {
+.ybr-panel{
   flex: 1;
   padding: 10px;
 }
+
+.side-menu__content {
+  flex: 2;
+  padding: 10px;
+}
+
