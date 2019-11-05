@@ -1,0 +1,7 @@
+.ybr-card-container{
+  font-size: calc(10px + .5vmin);
+  color: slategrey;
+  margin: 3px;
+  padding-left: 1rem;
+  width: 250px;
+}

@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import Table from "react-bootstrap/Table";
-import './Servers.css'
+import "./Applications.css";
 
-const servers = props => {
+const applications = props => {
   return (
-    <div className="server-body">
+    <div className="app-body">
       <h2>{props.ybrId}</h2>
-      <div className="server-body__grid">
+      <div className="app-body__grid">
         <Table striped bordered hover size="sm">
           <thead>
             <tr>
@@ -39,6 +39,6 @@ const servers = props => {
       </div>
     </div>
   );
-}
+};
 
-export default servers;
+export default applications;

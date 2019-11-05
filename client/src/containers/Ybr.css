@@ -1,0 +1,29 @@
+.ybr-flexbox {
+  display: flex;
+  flex-flow: row;
+}
+
+.ybr-flexbox__panel{
+  width: 120px;
+}
+.ybr-flexbox__panel ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.ybr-flexbox__panel li{
+  padding: 0 0.5rem;
+}
+
+.ybr-flexbox__panel a {
+  text-decoration: none;
+}
+
+.ybr-flexbox__panel a:hover,
+.ybr-flexbox__panel a:active {
+  color: #fa923f;
+}
+
+.ybr-flexbox__content{
+
+}

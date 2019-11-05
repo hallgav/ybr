@@ -1,46 +1,44 @@
-.Home {
-  text-align: left;
+.home {
+  display: flex;
+  flex-flow: row;
 }
 
-.Home-logo {
+.home-logo {
   height: 5vmin;
 }
 
-.Home-header {
+.home-header {
+  text-align: left;
   background-color: #282c34;
   min-height: 5vh;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: center;
   font-size: calc(10px + .5vmin);
   color: white;
   padding-left: 1rem;
 }
 
-.Home-body {
+.home-body {
+  margin: 10px;
+  }
+
+.home-body h3{
+  margin: 10px;
+  font-size: calc(10px + .5vmin);
+  color: slategrey;
+}
+
+.home-body__recent {
   display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: center;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
-.Home-body__recent {
-  align-items: left;
-  justify-content: center;
-  font-size: calc(10px + .5vmin);
-  color: slategrey;
-  padding-left: 1rem;
+.home-body__favourite {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.Home-body__favourite {
-  align-items: left;
-  justify-content: center;
-  font-size: calc(10px + .5vmin);
-  color: slategrey;
-  padding-left: 1rem;
-}
-
-.Home-link {
+.home-link {
   color: #09d3ac;
 }

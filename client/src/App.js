@@ -1,11 +1,5 @@
-import  React from "react";
-import SideMenu from "./containers/SideMenu";
+import React from "react";
 
-export default () => {
+import Routes from "./routes";
 
-  return (
-    <div>
-      <SideMenu />
-    </div>
-  );
-};
+export default () => (<Routes/>);
