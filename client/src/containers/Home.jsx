@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import YbrCard from "./YbrCard";
+import YbrCard from "../components/YbrCard";
 
 import "./Home.css";
-import SideMenu from "./SideMenu";
 
 const initialState = () => [
   {
@@ -11,35 +10,35 @@ const initialState = () => [
     header: "MLC Insurence",
     title: "YBR for DevOps team",
     text: "YBR to migrate data centre to AWS cloud",
-    path: "/ybr/1000/server"
+    path: "/ybr/1000"
   },
   {
     id: 2000,
     header: "MLC Insurence",
     title: "YBR for DevOps team",
     text: "YBR to migrate data centre to AWS cloud",
-    path: "/ybr/2000/server"
+    path: "/ybr/2000"
   },
   {
     id: 3000,
     header: "MLC Insurence",
     title: "YBR for DevOps team",
     text: "YBR to migrate data centre to AWS cloud",
-    path: "/ybr/3000/server"
+    path: "/ybr/3000"
   },
   {
     id: 4000,
     header: "MLC Insurence",
     title: "YBR for DevOps team",
     text: "YBR to migrate data centre to AWS cloud",
-    path: "/ybr/4000/server"
+    path: "/ybr/4000"
   },
   {
     id: 5000,
     header: "MLC Insurence",
     title: "YBR for DevOps team",
     text: "YBR to migrate data centre to AWS cloud",
-    path: "/ybr/5000/server"
+    path: "/ybr/5000"
   }
 ];
 function Home() {
@@ -47,9 +46,7 @@ function Home() {
 
   return (
     <div className="home">
-      <div>
-        <SideMenu />
-      </div>
+
       <div>
         <div className="home-header">
           <h2>JBR Home</h2>

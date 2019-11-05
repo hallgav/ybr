@@ -5,19 +5,20 @@ import Home from "../containers/Home";
 import ybr from "../containers/Ybr";
 import servers from "../containers/Servers";
 import applications from "../containers/Applications";
+import SideMenu from "../containers/SideMenu";
 
 export default () => (
   <BrowserRouter>
-      <Route path="/" component={Home} />
+      <Route path="/" component={SideMenu} />
+      <Route path="/home" exact component={Home} />
       <Route path="/create" exact component={Create} />
       <Route path="/search" exact component={Search} />
       <Route path="/settings" exact component={Settings} />
-      <Route path="/ybr:id" exact component={ybr} />
+      <Route path="/ybr/:id" component={ybr} />
       <Route path="/ybr/:id/server" exact component={servers} />
-      <Route path="/ybr/:id/applications" exact component={applications} />
+      <Route path="/ybr/:id/application" exact component={applications} />
   </BrowserRouter>
 );
-
 
 
 const Create = () => (

@@ -5,7 +5,7 @@ import "./Applications.css";
 const applications = props => {
   return (
     <div className="app-body">
-      <h2>{props.ybrId}</h2>
+      <h2>{props}</h2>
       <div className="app-body__grid">
         <Table striped bordered hover size="sm">
           <thead>
