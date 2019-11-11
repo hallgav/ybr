@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import Table from "react-bootstrap/Table";
 import "./Applications.css";
+import {YbrDataContext} from "../contexts/YbrDataContext"
 
-const applications = props => {
+const Applications = props => {
+  const value = useContext(YbrDataContext);
   return (
     <div className="app-body">
-      <h2>{props}</h2>
+      <h2>{value.client}</h2>
       <div className="app-body__grid">
         <Table striped bordered hover size="sm">
           <thead>
@@ -41,4 +43,4 @@ const applications = props => {
   );
 };
 
-export default applications;
+export default Applications;

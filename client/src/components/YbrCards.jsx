@@ -6,7 +6,6 @@ import { CompanyDataContext } from "../contexts/CompanyDataContext";
 const YbrCards = () => {
   const value = useContext(CompanyDataContext);
 
-  console.log("value **************", value);
   return (
     <>
       {value.map(y => (

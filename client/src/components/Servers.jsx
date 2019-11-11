@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Table from "react-bootstrap/Table";
 import './Servers.css'
+import {YbrDataContext} from "../contexts/YbrDataContext"
 
-const servers = props => {
+
+
+const Servers = props => {
+  const value = useContext(YbrDataContext)
   return (
     <div className="server-body">
-      <h2>{props.ybrId}</h2>
+      <h2>{value.client}</h2>
       <div className="server-body__grid">
         <Table striped bordered hover size="sm">
           <thead>
@@ -38,7 +42,8 @@ const servers = props => {
         </Table>
       </div>
     </div>
+
   );
 }
 
-export default servers;
+export default Servers;

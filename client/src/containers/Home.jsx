@@ -1,7 +1,7 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 
 import YbrCards from "../components/YbrCards";
-import {CompanyDataProvider, CompanyDataContext} from "../contexts/CompanyDataContext"
+import {CompanyDataProvider} from "../contexts/CompanyDataContext"
 
 import "./Home.css";
 

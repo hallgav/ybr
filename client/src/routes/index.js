@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 
 import Home from "../containers/Home";
-import ybr from "../containers/Ybr";
-import servers from "../containers/Servers";
-import applications from "../containers/Applications";
+import Ybr from "../containers/Ybr";
+import ServersContainer from "../containers/ServersContainer";
+import ApplicationsContainer from "../containers/ApplicationsContainer";
 import SideMenu from "../containers/SideMenu";
 
 export default () => (
@@ -14,9 +14,9 @@ export default () => (
       <Route path="/create" exact component={Create} />
       <Route path="/search" exact component={Search} />
       <Route path="/settings" exact component={Settings} />
-      <Route path="/ybr/:id" component={ybr} />
-      <Route path="/ybr/:id/server" exact component={servers} />
-      <Route path="/ybr/:id/application" exact component={applications} />
+      <Route path="/ybr/:id" component={Ybr} />
+      <Route path="/ybr/:id/server" exact component={ServersContainer} />
+      <Route path="/ybr/:id/application" exact component={ApplicationsContainer} />
   </BrowserRouter>
 );
 
