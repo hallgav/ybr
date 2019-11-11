@@ -21,7 +21,7 @@ const getYbrData = (ybr_id) => {
         "App/ Vendor",
         "Version (if applicable)",
         "Vendor",
-        "Descr",
+        "Description",
         "Platform",
         "Hosting",
         "6R",
@@ -87,7 +87,6 @@ const getYbrData = (ybr_id) => {
 export const YbrDataContext = createContext();
 
 export const YbrDataProvider = props => {
-
   const [ybr, setYbr] = useState(() => getYbrData(props.ybrId));
   return (
     <YbrDataContext.Provider value={ybr}>

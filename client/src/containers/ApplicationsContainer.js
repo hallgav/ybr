@@ -5,7 +5,7 @@ const useParams = require("react-router-dom").useParams;
 
 
 const ApplicationsContainer = props => {
-  const id  = useParams()
+  const {id}  = useParams()
   return (
     <YbrDataProvider ybrId={id}>
       <Applications/>

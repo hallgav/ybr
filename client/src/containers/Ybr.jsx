@@ -6,7 +6,7 @@ import "./Ybr.css";
 const useParams = require("react-router-dom").useParams;
 
 const Ybr = props => {
-  const id  = useParams()
+  const {id}  = useParams()
   return (
     <>
       <div className="ybr-flexbox__panel">

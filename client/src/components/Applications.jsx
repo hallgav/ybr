@@ -1,41 +1,45 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import Table from "react-bootstrap/Table";
+import Badge from "react-bootstrap/Badge";
 import "./Applications.css";
-import {YbrDataContext} from "../contexts/YbrDataContext"
+import { YbrDataContext } from "../contexts/YbrDataContext";
 
 const Applications = props => {
   const value = useContext(YbrDataContext);
+  const { headings, applications } = value;
   return (
     <div className="app-body">
       <h2>{value.client}</h2>
+      <div className="application-sub-heading">
+        <h3>Applications:</h3>{" "}
+        <h5 className="application-sub-heading__count">
+          <Badge variant="primary">{value.servers.length}</Badge>
+        </h5>
+      </div>
       <div className="app-body__grid">
-        <Table striped bordered hover size="sm">
+        <Table className="application-table" striped bordered hover size="sm">
           <thead>
             <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              {headings.applications.map(h => (
+                <th>{h}</th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td colSpan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            {applications.map(a => (
+              <tr>
+                <td>{a.app}</td>
+                <td>{a.version}</td>
+                <td>{a.vendor}</td>
+                <td>{a.description}</td>
+                <td>{a.platform}</td>
+                <td>{a.hosting}</td>
+                <td>{a.sixR}</td>
+                <td>{a.notes}</td>
+                <td>{a.status}</td>
+                <td>{a.assignee}</td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </div>
