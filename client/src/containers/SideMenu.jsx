@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./SideMenu.css";
+
 
 const SideMenu = props => (
   <div className="side-menu">
@@ -20,6 +21,7 @@ const SideMenu = props => (
         </li>
       </ul>
     </div>
+    <Redirect to="/home"/>
   </div>
 );
 

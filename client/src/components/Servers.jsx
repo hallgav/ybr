@@ -9,8 +9,13 @@ const Servers = props => {
   const [ybr, setYbr] = useContext(YbrDataContext);
   const { client, headings, servers } = ybr;
 
-  const onAddHandler = () => {
+  const onAddHandler = (e) => {
+    //Open a model window and link to a callback on save
 
+    
+  }
+
+  const onSaveHandler = e => {
     const new_server =       {
       name: "",
       noOfVMs: 0,
@@ -22,10 +27,10 @@ const Servers = props => {
       usableStorage: 0,
       guestOS: ""
     }
+    
     const newYbr = {...ybr}
     newYbr.servers = [...newYbr.servers, new_server]
     setYbr(newYbr)
-
   }
 
   const onDeleteHandler = () => {

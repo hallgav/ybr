@@ -1,4 +1,4 @@
-.grid-main table{
+.grid-main table {
   width: 100%;
   margin-bottom: 1rem;
   color: #212529;
@@ -17,13 +17,12 @@
   color: #dee2e6;
 }
 
-.grid-main th{
-  font-size: 11px;  
+.grid-main th {
+  font-size: 11px;
   border: 1px solid #dee2e6;
-  padding: .3rem;
-
-
-}.grid-main tbody {
+  padding: 0.3rem;
+}
+.grid-main tbody {
   display: table-row-group;
   vertical-align: middle;
   border-color: inherit;
@@ -35,10 +34,14 @@
   border-color: inherit;
 }
 
-
-.grid-main td{
-  font-size: 11px;  
+.grid-main td {
+  font-size: 11px;
   border: 1px solid #dee2e6;
-  padding: .3rem;
+  padding: 0.3rem;
 }
 
+/* Define the default color for all the table rows */
+/* Define the hover highlight color for the table row */
+.grid-main tr:hover td {
+  background-color: #cad9db;
+}
