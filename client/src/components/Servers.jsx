@@ -1,47 +1,69 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Table from "react-bootstrap/Table";
 import "./Servers.css";
 import { YbrDataContext } from "../contexts/YbrDataContext";
-import GridToolbar from "../components/GridToolbar"
-import Grid from "../components/Grid"
+import GridToolbar from "../components/GridToolbar";
+import Grid from "../components/Grid";
+import Server from "./Server";
+
+const onDeleteHandler = () => {
+  alert("Will delete the selected server");
+};
 
 const Servers = props => {
+  const setDefaultValue = () => {
+    return { name: "Gavin Hall" };
+  };
+
   const [ybr, setYbr] = useContext(YbrDataContext);
   const { client, headings, servers } = ybr;
+  const [modalShow, setModalShow] = React.useState(false);
+  const [server, setServer] = useState(setDefaultValue());
 
-  const onAddHandler = (e) => {
-    //Open a model window and link to a callback on save
+  const onAddHandler = () => {
+    setServer(setDefaultValue());
+    setModalShow(true);
+  };
 
-    
-  }
+  const onChangeHandler = e => {
+    //e.preventDefault();
+    const new_server = { ...server };
+    switch (e.target.name) {
+      case "server-name":
+        new_server.name = e.target.value;
+        setServer(new_server);
+        break;
 
-  const onSaveHandler = e => {
-    const new_server =       {
-      name: "",
-      noOfVMs: 0,
-      vCPU: 0,
-      peakCpuUtilization: 0,
-      vRAM: 0,
-      peakRamUtilization: 0,
-      provisionedStorage: 0,
-      usableStorage: 0,
-      guestOS: ""
+      default:
+        break;
     }
-    
-    const newYbr = {...ybr}
-    newYbr.servers = [...newYbr.servers, new_server]
-    setYbr(newYbr)
-  }
+  };
 
-  const onDeleteHandler = () => {
-    alert("Will delete the selected server")
-  }
+  const onSaveHandler = () => {
+    const newYbr = { ...ybr };
+    let server_arr = Object.values(server)
+    newYbr.servers = [...newYbr.servers, server_arr];
+    setYbr(newYbr);
+    setModalShow(false);
+  };
 
   return (
     <div className="server-body">
       <h2>{client}</h2>
-      <GridToolbar heading="Servers:" count={servers.length} onAdd={onAddHandler} onDelete={onDeleteHandler}/>
-      <Grid data={servers} headings={headings.servers}/>
+      <GridToolbar
+        heading="Servers:"
+        count={servers.length}
+        onAdd={onAddHandler}
+        onDelete={onDeleteHandler}
+      />
+      <Grid data={servers} headings={headings.servers} />
+      <Server
+        show={modalShow}
+        value={server}
+        onChange={onChangeHandler}
+        onCancel={() => setModalShow(false)}
+        onSave={onSaveHandler}
+      />
     </div>
   );
 };

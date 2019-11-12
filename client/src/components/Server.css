@@ -1,0 +1,9 @@
+#contained-modal-body input{
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+#contained-modal-body label{
+  margin-bottom: 0px;
+  font-size: 14px;
+}

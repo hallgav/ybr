@@ -3,7 +3,6 @@ import React from "react";
 import "./Grid.css";
 
 const Grid = ({ headings, data }) => {
-  console.log("display grid", headings);
   return (
     <div className="grid-main">
       <table>
