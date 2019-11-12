@@ -1,0 +1,36 @@
+.grid-toolbar{
+ margin: 0;
+ padding-bottom: 2px;
+ padding-top: 4px;
+ padding-left: 6px;
+ background-color: rgb(232, 233, 238);
+}
+
+.grid-toolbar ul{
+  display: inline;
+  list-style-type: none;
+}
+
+.grid-toolbar li{
+  display: inline;
+}
+
+.grid-toolbar-heading{
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.grid-toolbar-heading__count{
+  margin-left: 5px;
+}
+
+
+.grid-toolbar button{
+  border-radius: .25rem;
+  font-size: x-small;  
+  font-weight: bolder;
+  margin-left: 5px;
+  background-color: #007bff;
+  color: white;
+  vertical-align: middle;
+}

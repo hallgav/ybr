@@ -17,7 +17,7 @@ function Home() {
 
         <div>
           <div className="home-header">
-            <h2>JBR Home</h2>
+            <h2>YBR Home</h2>
           </div>
           <h3>Recent</h3>
           <div className="home-body__recent">

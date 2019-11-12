@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Table from "react-bootstrap/Table";
 import "./Servers.css";
 import { YbrDataContext } from "../contexts/YbrDataContext";
-import Badge from "react-bootstrap/Badge";
+import GridToolbar from "../components/GridToolbar"
 
 const Servers = props => {
   const value = useContext(YbrDataContext);
@@ -10,12 +10,7 @@ const Servers = props => {
   return (
     <div className="server-body">
       <h2>{value.client}</h2>
-      <div className="server-sub-heading">
-        <h3>Servers:</h3>
-        <h5 className="server-sub-heading__count">
-          <Badge variant="primary">{value.servers.length}</Badge>
-        </h5>
-      </div>
+      <GridToolbar heading="Servers:" count={value.servers.length}/>
       <div className="server-body__grid">
         <Table className="server-table" striped bordered hover size="sm">
           <thead>

@@ -5,6 +5,7 @@
 
 .ybr-flexbox__panel{
   width: 120px;
+  font-size: 12px;
 }
 .ybr-flexbox__panel ul{
   list-style-type: none;

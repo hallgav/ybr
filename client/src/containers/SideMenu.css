@@ -8,8 +8,9 @@
   padding: 10px;
   background-color: #f0f0f0;
   height: 100%;
+  font-size: 12px;
 }
-
+  
 .side-menu__pannel ul {
   list-style-type: none;
   margin: 0;
@@ -19,3 +20,4 @@
 .side-menu__pannel li {
   padding: 0 0.5rem;
 }
+

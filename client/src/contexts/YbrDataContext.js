@@ -4,7 +4,7 @@ const getYbrData = (ybr_id) => {
   //Use the ybr_id to get the ybr data
   return {
     ybrId: 1,
-    client: "MLC Insurence LTD",
+    client: "MLC Insurance LTD",
     headings: {
       servers: [
         "Name",
