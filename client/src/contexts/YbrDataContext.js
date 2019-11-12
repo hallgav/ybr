@@ -31,55 +31,54 @@ const getYbrData = (ybr_id) => {
       ]
     },
     servers: [
-      {
-        name: "ART02DLDVDB01",
-        noOfVMs: 1,
-        vCPU: 12,
-        peakCpuUtilization: 0.9,
-        vRAM: 64,
-        peakRamUtilization: 0.9,
-        provisionedStorage: 3450,
-        usableStorage: 3450,
-        guestOS: "Microsoft Windows Server 2016 (64-bit)"
-      },
-      {
-        name: "END02SNDBOXAP20",
-        noOfVMs: 1,
-        vCPU: 2,
-        peakCpuUtilization: 0.8,
-        vRAM: 64,
-        peakRamUtilization: 0.9,
-        provisionedStorage: 64,
-        usableStorage: 64,
-        guestOS: "Red Hat Enterprise Linux 7 (64-bit)"
-      }
+      [
+        "ART02DLDVDB01",
+        1,
+        12,
+        0.9,
+        64,
+        0.9,
+        3450,
+        3450,
+        "Microsoft Windows Server 2016 (64-bit)"
+      ],
+      [
+        "END02SNDBOXAP20",
+        1,
+        2,
+        0.8,
+        64,
+        0.9,
+        64,
+        64,
+        "Red Hat Enterprise Linux 7 (64-bit)"
+      ]
     ],
     applications: [
-      {
-        app: "CAS",
-        version: "",
-        vendor: "",
-        description:
-          "CAS (Compliance Automation Server)  enables insurance organizations to automate monitoring and protection against leading edge fraud and leakage",
-        platform: "",
-        hosting: "",
-        sixR: "Rehost",
-        notes: "",
-        status: "",
-        assignee: "Gavin"
-      },
-      {
-        app: "SecureWorks",
-        version: "",
-        vendor: "SecureWorks. Partnered with Dell",
-        description: "MSSP for digital platform.",
-        platform: "SEC",
-        hosting: "",
-        sixR: "Rehost",
-        notes: "",
-        status: "Complete",
-        assignee: "Gavin"
-      }
+      [
+        "CAS",
+        "",
+        "",
+        "CAS (Compliance Automation Server)  enables insurance organizations to automate monitoring and protection against leading edge fraud and leakage",
+        "",
+        "",
+        "Rehost",
+        "",
+        "",
+        "Gavin"
+      ],
+      [
+        "SecureWorks",
+        "",
+        "SecureWorks. Partnered with Dell",
+         "MSSP for digital platform.",
+        "SEC",
+        "",
+        "Rehost",
+        "",
+        "Complete",
+        "Gavin"
+      ]
     ]
   };
 };
@@ -89,7 +88,7 @@ export const YbrDataContext = createContext();
 export const YbrDataProvider = props => {
   const [ybr, setYbr] = useState(() => getYbrData(props.ybrId));
   return (
-    <YbrDataContext.Provider value={ybr}>
+    <YbrDataContext.Provider value={[ybr, setYbr]}>
       {props.children}
     </YbrDataContext.Provider>
   );

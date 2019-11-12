@@ -3,42 +3,26 @@ import Table from "react-bootstrap/Table";
 import "./Applications.css";
 import { YbrDataContext } from "../contexts/YbrDataContext";
 import GridToolbar from "../components/GridToolbar"
+import Grid from "../components/Grid"
 
 
 const Applications = props => {
-  const value = useContext(YbrDataContext);
-  const { headings, applications } = value;
+  const [ybr, setYbr] = useContext(YbrDataContext);
+
+  const onAddHandler = (props) => {
+    alert("Will add a new application")
+  }
+
+  const onDeleteHandler = (props) => {
+    alert("Will delete the selected application")
+  }
+
+  const { client, headings, applications } = ybr;
   return (
     <div className="app-body">
-      <h2>{value.client}</h2>
-      <GridToolbar heading="Applications:" count={value.applications.length}/>
-      <div className="app-body__grid">
-        <Table className="application-table" striped bordered hover size="sm">
-          <thead>
-            <tr>
-              {headings.applications.map(h => (
-                <th>{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {applications.map(a => (
-              <tr>
-                <td>{a.app}</td>
-                <td>{a.version}</td>
-                <td>{a.vendor}</td>
-                <td>{a.description}</td>
-                <td>{a.platform}</td>
-                <td>{a.hosting}</td>
-                <td>{a.sixR}</td>
-                <td>{a.notes}</td>
-                <td>{a.status}</td>
-                <td>{a.assignee}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
+      <h2>{client}</h2>
+      <GridToolbar heading="Applications:" count={applications.length} onAdd={onAddHandler} onDelete={onDeleteHandler}/>
+      <Grid data={applications} headings={headings.applications}/>
     </div>
   );
 };

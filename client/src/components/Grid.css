@@ -1,0 +1,44 @@
+.grid-main table{
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 2px;
+  border: 1px solid #dee2e6;
+}
+
+.grid-main thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+  border: inherit;
+  background-color: #212529;
+  color: #dee2e6;
+}
+
+.grid-main th{
+  font-size: 11px;  
+  border: 1px solid #dee2e6;
+  padding: .3rem;
+
+
+}.grid-main tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.grid-main tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+
+.grid-main td{
+  font-size: 11px;  
+  border: 1px solid #dee2e6;
+  padding: .3rem;
+}
+
