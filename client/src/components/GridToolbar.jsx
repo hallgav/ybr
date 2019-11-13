@@ -8,7 +8,6 @@ const GridToolbar = props => {
       <li className="grid-toolbar-heading">{props.heading}</li>
       <li className="grid-toolbar-heading__count"><Badge variant="primary">{props.count}</Badge></li>
       <li><button type="button" className="grid-toolbar-button__add" onClick={props.onAdd}>+</button></li>
-      <li><button type="button" className="grid-toolbar-button__delete" onClick={props.onDelete}>-</button></li>
     </ul>
   );
 };

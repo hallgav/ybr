@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
+import React, { useContext, useState } from "react";
 import "./Servers.css";
 import { YbrDataContext } from "../contexts/YbrDataContext";
 import GridToolbar from "../components/GridToolbar";
@@ -33,27 +32,33 @@ const Servers = props => {
     };
   };
 
+  const ACTION_ADD = "ADD";
+  const ACTION_UPDATE = "UPDATE";
+
   const [ybr, setYbr] = useContext(YbrDataContext);
   const { client, headings, servers } = ybr;
-  const [modalShow, setModalShow] = React.useState(false);
-  const [server, setServer] = useState(setDefaultValue());
+  const [modalShow, setModalShow] = useState(false);
+  const [server, setServer] = useState({index: 0, value: setDefaultValue()});
+  const [action, setAction] = useState(ACTION_ADD)
 
-  const onAddHandler = () => {
-    setServer(setDefaultValue());
+  const onAddClickHandler = () => {
+    setServer({index: 0, value: setDefaultValue()});
+    setAction(ACTION_ADD);
+    setModalShow(true);
+  };
+  
+  const onUpdateClickHandler = () => {
+    setAction(ACTION_UPDATE);
     setModalShow(true);
   };
 
-  const onDeleteHandler = () => {
-    setModalShow(true);
-  };
-
-  const onRowClickHandler = (e, row) => {
+  const onRowClickHandler = (e, row, index) => {
     //Set the server object to the current clicked row
-    const cur_server = setDefaultValue();
+    const cur_server = {index: index, value: setDefaultValue()};
 
     let i = 0;
-    for (let key in cur_server) {
-      cur_server[key] = row[i];
+    for (let key in cur_server.value) {
+      cur_server.value[key] = row[i];
       i++;
     }
     try {
@@ -68,31 +73,31 @@ const Servers = props => {
     const new_server = { ...server };
     switch (e.target.name) {
       case fields.serverName.name:
-        new_server.serverName = e.target.value;
+        new_server.value.serverName = e.target.value;
         break;
       case fields.noVms.name:
-        new_server.noVms = e.target.value;
+        new_server.value.noVms = e.target.value;
         break;
       case fields.vCpu.name:
-        new_server.vCpu = e.target.value;
+        new_server.value.vCpu = e.target.value;
         break;
       case fields.peakCpu.name:
-        new_server.peakCpu = e.target.value;
+        new_server.value.peakCpu = e.target.value;
         break;
       case fields.vRam.name:
-        new_server.vRam = e.target.value;
+        new_server.value.vRam = e.target.value;
         break;
       case fields.peakRam.name:
-        new_server.peakRam = e.target.value;
+        new_server.value.peakRam = e.target.value;
         break;
       case fields.provStore.name:
-        new_server.provStore = e.target.value;
+        new_server.value.provStore = e.target.value;
         break;
       case fields.useStore.name:
-        new_server.useStore = e.target.value;
+        new_server.value.useStore = e.target.value;
         break;
       case fields.guestOs.name:
-        new_server.guestOs = e.target.value;
+        new_server.value.guestOs = e.target.value;
         break;
       default:
         break;
@@ -101,9 +106,26 @@ const Servers = props => {
   };
 
   const onSaveHandler = () => {
+
     const newYbr = { ...ybr };
-    let server_arr = Object.values(server);
-    newYbr.servers = [...newYbr.servers, server_arr];
+    let server_arr = Object.values(server.value);
+    switch (action) {
+      case ACTION_ADD:
+        newYbr.servers = [...newYbr.servers, server_arr];
+        break;
+      case ACTION_UPDATE:
+        newYbr.servers[server.index] = server_arr;
+        break;    
+      default:
+        break;
+    }
+    setYbr(newYbr);
+    setModalShow(false);
+  };
+
+  const onDeleteHandler = () => {
+    const newYbr = { ...ybr };
+    newYbr.servers = ybr.servers.filter((s, index) => index != server.index)
     setYbr(newYbr);
     setModalShow(false);
   };
@@ -114,23 +136,23 @@ const Servers = props => {
       <GridToolbar
         heading="Servers:"
         count={servers.length}
-        onAdd={onAddHandler}
-        onDelete={onDeleteHandler}
+        onAdd={onAddClickHandler}
       />
       <Grid
         data={servers}
         headings={headings.servers}
         onRowClick={onRowClickHandler}
-        onRowLinkClick={() => setModalShow(true)}
+        onRowLinkClick={onUpdateClickHandler}
       />
       {/* Modal Server only shown when Add and Update */}
       <Server
         show={modalShow}
-        value={server}
+        onHide={() => setModalShow(false)}
+        value={server.value}
         fields={fields}
         onChange={onChangeHandler}
         onCancel={() => setModalShow(false)}
-        onHide={() => setModalShow(false)}
+        onDelete={onDeleteHandler}
         onSave={onSaveHandler}
       />      
     </div>

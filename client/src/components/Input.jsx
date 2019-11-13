@@ -1,8 +1,9 @@
 import React from "react";
+import './Input.css'
 
 const Input = props => {
   return (
-    <>
+    <div className="input-component">
       <label htmlFor={props.id}>{props.label}</label>
       <input
           className="form-control"
@@ -12,7 +13,7 @@ const Input = props => {
           onChange={props.onChange}
           value={props.value}
       />
-    </>
+    </div>
   );
 };
 

@@ -4,8 +4,6 @@ import "./Grid.css";
 
 const Grid = ({ headings, data, onRowClick, onRowLinkClick }) => {
 
-  const testClick = () => console.log("link clicked")
-
   const renderCell = (parent, value, position) => {
     return position === 0 ? <td><button onClick={(e) => onRowLinkClick(e, parent)}>{value}</button></td> : <td>{value}</td>
   }

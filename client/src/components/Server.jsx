@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Input from "./Input";
@@ -7,7 +7,6 @@ import "./Server.css";
 
 const Server = props => {
   const { fields } = props;
-  console.log("in modal screen......", props.value)
   return (
     <Modal
       show={props.show}
@@ -92,6 +91,9 @@ const Server = props => {
         />
       </Modal.Body>
       <Modal.Footer>
+      <Button size="sm" onClick={props.onDelete}>
+          Delete
+        </Button>
         <Button size="sm" onClick={props.onSave}>
           Save
         </Button>

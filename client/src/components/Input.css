@@ -1,0 +1,11 @@
+.input-component label{
+  margin-bottom: 0px;
+  font-size: 12px;
+  color: rgb(189, 189, 189);
+  font-weight: bold;
+}
+
+.input-component input{
+  margin-bottom: 10px;
+  font-size: 12px;
+}
