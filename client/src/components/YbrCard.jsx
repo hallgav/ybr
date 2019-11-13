@@ -1,8 +1,8 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import Link from "react-router-dom/Link";
-
 import "./YbrCard.css";
+
+const Link = require("react-router-dom").Link
 
 const ybrCard = props => {
   return (

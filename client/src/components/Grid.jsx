@@ -5,6 +5,7 @@ import "./Grid.css";
 const Grid = ({ headings, data, onRowClick, onRowLinkClick }) => {
 
   const renderCell = (parent, value, position) => {
+    //The first column is a "key" and has a link hook
     return position === 0 ? <td><button onClick={(e) => onRowLinkClick(e, parent)}>{value}</button></td> : <td>{value}</td>
   }
 

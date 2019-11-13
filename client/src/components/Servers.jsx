@@ -36,7 +36,7 @@ const Servers = props => {
   const ACTION_UPDATE = "UPDATE";
 
   const [ybr, setYbr] = useContext(YbrDataContext);
-  const { client, headings, servers } = ybr;
+  const {client, headings, servers } = ybr;
   const [modalShow, setModalShow] = useState(false);
   const [server, setServer] = useState({index: 0, value: setDefaultValue()});
   const [action, setAction] = useState(ACTION_ADD)

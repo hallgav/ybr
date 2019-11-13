@@ -1,8 +1,9 @@
 import React from "react";
-import Link from "react-router-dom/Link";
-import Redirect from "react-router-dom/Redirect";
-
 import "./Ybr.css";
+
+const Link = require("react-router-dom").Link
+const Redirect = require("react-router-dom").Redirect
+
 
 const useParams = require("react-router-dom").useParams;
 
@@ -13,10 +14,10 @@ const Ybr = props => {
       <div className="ybr-flexbox__panel">
         ASSETS
         <ul>
-          <li>
+          <li key="1">
             <Link to={`/ybr/${id}/server`}>Servers</Link>
           </li>
-          <li>
+          <li key="2">
             <Link to={`/ybr/${id}/application`}>Applications</Link>
           </li>
         </ul>
