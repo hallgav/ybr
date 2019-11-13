@@ -1,58 +1,105 @@
-import React, {useEffect} from 'react';
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
+import React, { useEffect } from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Input from "./Input";
 
-import './Server.css'
+import "./Server.css";
 
-const Server = (props) => {
+const Server = props => {
+  const { fields } = props;
+  return (
+    <Modal
+      show={props.show}
+      onHide={props.onHide}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Server</Modal.Title>
+      </Modal.Header>
+      <Modal.Body id="contained-modal-body">
+        <Input
+          label="Name:"
+          name={fields.serverName.name}
+          id={fields.serverName.id}
+          onChange={props.onChange}
+          value={props.value.serverName}
+        />
 
-  return ( 
-        <Modal
-          show={props.show}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-              Server
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body id="contained-modal-body">
-            <label htmlFor="server_name">Name: </label>
-            <input className="form-control" type="text" name="server-name" id="server_name" onChange={props.onChange} value={props.value.name}/>
+        <Input
+          label="# of VMs:"
+          name={fields.noVms.name}
+          id={fields.noVms.id}
+          onChange={props.onChange}
+          value={props.value.noVms}
+        />
+        <Input
+          label="Virtual CPU:"
+          name={fields.vCpu.name}
+          id={fields.vCpu.id}
+          onChange={props.onChange}
+          value={props.value.vCpu}
+        />
+        <Input
+          label="Peak CPU Utilization (%):"
+          name={fields.peakCpu.name}
+          id={fields.peakCpu.id}
+          onChange={props.onChange}
+          value={props.value.peakCpu}
+        />
 
-            <label htmlFor="no_vms"># of VMs: </label>
-            <input className="form-control" type="text" name="no-vms" id="no_vms"/>
+        <Input           
+          label="Virtual RAM (GB)"
+          name={fields.vRam.name}
+          id={fields.vRam.id}
+          onChange={props.onChange}
+          value={props.value.vRam}
+        />
 
-            <label htmlFor="v_cpu">Virtual CPU: </label>
-            <input className="form-control" type="text" name="v-cpu-vms" id="v_cpu"/>
-            
-            <label htmlFor="peak_cpu">Peak CPU Utilization (%): </label>
-            <input className="form-control" type="text" name="peak-cpu" id="peak_cpu"/>
+        <Input
+          label="Peak vRAM Utilization (%)"
+          name={fields.peakRam.name}
+          id={fields.peakRam.id}
+          onChange={props.onChange}
+          value={props.value.peakRam}
+        />
 
-            <label htmlFor="v_ram">Virtual RAM (GB): </label>
-            <input className="form-control" type="text" name="v-ram" id="v_ram"/>
+        <Input
+          label="Provisioned Storage (GB):"
+          name={fields.provStore.name}
+          id={fields.provStore.id}
+          onChange={props.onChange}
+          value={props.value.provStore}
+        />
 
-            <label htmlFor="prak_vram">Peak vRAM Utilization (%): </label>
-            <input className="form-control" type="text" name="peak-ram" id="prak_vram"/>
+        <label htmlFor="use_store">Usable Storage (GB): </label>
+        <Input
+          label="Usable Storage (GB):"
+          name={fields.useStore.name}
+          id={fields.useStore.id}
+          onChange={props.onChange}
+          value={props.value.useStore}
+        />
 
-            <label htmlFor="prov_store">Provisioned Storage (GB): </label>
-            <input className="form-control" type="text" name="prov-store" id="prov_store"/>
+        <Input
+          label="Guest OS:"
+          name={fields.guestOs.name}
+          id={fields.guestOs.id}
+          onChange={props.onChange}
+          value={props.value.guestOs}
+        />
+      </Modal.Body>
+      <Modal.Footer>
+        <Button size="sm" onClick={props.onSave}>
+          Save
+        </Button>
+        <Button size="sm" onClick={props.onCancel}>
+          Cancel
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+};
 
-            <label htmlFor="use_store">Usable Storage (GB): </label>
-            <input className="form-control" type="text" name="use-store" id="use_store"/>
-            
-            <label htmlFor="guest_os">Guest OS: </label>
-            <input className="form-control" type="text" name="guest-os" id="guest_os"/>
-
-          </Modal.Body>
-          <Modal.Footer>
-            <Button size="sm" onClick={props.onSave}>Save</Button>
-            <Button size="sm" onClick={props.onCancel}>Cancel</Button>
-          </Modal.Footer>
-        </Modal>
-      );
-}
- 
 export default Server;

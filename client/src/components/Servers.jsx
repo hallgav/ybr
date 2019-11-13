@@ -6,13 +6,31 @@ import GridToolbar from "../components/GridToolbar";
 import Grid from "../components/Grid";
 import Server from "./Server";
 
-const onDeleteHandler = () => {
-  alert("Will delete the selected server");
+const fields = {
+  serverName: { name: "server-name", id: "server_name", defaultValue: "" },
+  noVms: { name: "no_vms", id: "no_vms", defaultValue: 0 },
+  vCpu: { name: "v-cpu", id: "v_cpu", defaultValue: 0 },
+  peakCpu: { name: "peak-cpu", id: "peak_cpu", defaultValue: 0 },
+  vRam: { name: "v-ram", id: "v_ram", defaultValue: 0 },
+  peakRam: { name: "peak-ram", id: "prak_ram", defaultValue: 0 },
+  provStore: { name: "prov-store", id: "prov_store", defaultValue: 0 },
+  useStore: { name: "use-store", id: "use_store", defaultValue: 0 },
+  guestOs: { name: "guest-os", id: "guest_os", defaultValue: "" }
 };
 
 const Servers = props => {
   const setDefaultValue = () => {
-    return { name: "Gavin Hall" };
+    return {
+      serverName: fields.serverName.defaultValue,
+      noVms: fields.noVms.defaultValue,
+      vCpu: fields.vCpu.defaultValue,
+      peakCpu: fields.peakCpu.defaultValue,
+      vRam: fields.vRam.defaultValue,
+      peakRam: fields.peakRam.defaultValue,
+      provStore: fields.provStore.defaultValue,
+      useStore: fields.useStore.defaultValue,
+      guestOs: fields.guestOs.defaultValue
+    };
   };
 
   const [ybr, setYbr] = useContext(YbrDataContext);
@@ -25,23 +43,73 @@ const Servers = props => {
     setModalShow(true);
   };
 
+  const onDeleteHandler = () => {
+    setModalShow(true);
+  };
+
+  const onRowClickHandler = (e, row) => {
+    setServer(row);
+  };
+
+  const showServerHandler = (e, row) => {
+    //row is an array and needs to be converted to a server object
+    let i = 0;
+    let str_arr = [];
+    for (let key in fields) {
+      const element = '"' + key + '": "' + row[i] + '"';
+      str_arr.push(element);
+      i++;
+    }
+    try {
+      let curr_row = JSON.parse("{" + str_arr.join(",") + "}");
+      setServer(curr_row);
+      setModalShow(true);
+      console.log("server = ", server);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const onChangeHandler = e => {
-    //e.preventDefault();
     const new_server = { ...server };
     switch (e.target.name) {
-      case "server-name":
-        new_server.name = e.target.value;
-        setServer(new_server);
+      case fields.serverName.name:
+        new_server.serverName = e.target.value;
         break;
-
+      case fields.noVms.name:
+        new_server.noVms = e.target.value;
+        break;
+      case fields.vCpu.name:
+        new_server.vCpu = e.target.value;
+        break;
+      case fields.peakCpu.name:
+        new_server.peakCpu = e.target.value;
+        break;
+      case fields.vRam.name:
+        new_server.vRam = e.target.value;
+        break;
+      case fields.peakRam.name:
+        new_server.peakRam = e.target.value;
+        break;
+      case fields.provStore.name:
+        new_server.provStore = e.target.value;
+        break;
+      case fields.useStore.name:
+        new_server.useStore = e.target.value;
+        break;
+      case fields.guestOs.name:
+        new_server.guestOs = e.target.value;
+        break;
       default:
         break;
     }
+    setServer(new_server);
   };
 
   const onSaveHandler = () => {
     const newYbr = { ...ybr };
-    let server_arr = Object.values(server)
+    let server_arr = Object.values(server);
     newYbr.servers = [...newYbr.servers, server_arr];
     setYbr(newYbr);
     setModalShow(false);
@@ -56,12 +124,19 @@ const Servers = props => {
         onAdd={onAddHandler}
         onDelete={onDeleteHandler}
       />
-      <Grid data={servers} headings={headings.servers} />
+      <Grid
+        data={servers}
+        headings={headings.servers}
+        onRowClick={onRowClickHandler}
+        onRowLinkClick={showServerHandler}
+      />
       <Server
         show={modalShow}
         value={server}
+        fields={fields}
         onChange={onChangeHandler}
         onCancel={() => setModalShow(false)}
+        onHide={() => setModalShow(false)}
         onSave={onSaveHandler}
       />
     </div>
