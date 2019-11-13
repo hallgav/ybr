@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import "./Servers.css";
 import { YbrDataContext } from "../contexts/YbrDataContext";
@@ -48,27 +48,20 @@ const Servers = props => {
   };
 
   const onRowClickHandler = (e, row) => {
-    setServer(row);
-  };
+    //Set the server object to the current clicked row
+    const cur_server = setDefaultValue();
 
-  const showServerHandler = (e, row) => {
-    //row is an array and needs to be converted to a server object
     let i = 0;
-    let str_arr = [];
-    for (let key in fields) {
-      const element = '"' + key + '": "' + row[i] + '"';
-      str_arr.push(element);
+    for (let key in cur_server) {
+      cur_server[key] = row[i];
       i++;
     }
     try {
-      let curr_row = JSON.parse("{" + str_arr.join(",") + "}");
-      setServer(curr_row);
-      setModalShow(true);
-      console.log("server = ", server);
-
+      setServer(cur_server);
     } catch (error) {
       console.error(error);
-    }
+    }    
+
   };
 
   const onChangeHandler = e => {
@@ -128,8 +121,9 @@ const Servers = props => {
         data={servers}
         headings={headings.servers}
         onRowClick={onRowClickHandler}
-        onRowLinkClick={showServerHandler}
+        onRowLinkClick={() => setModalShow(true)}
       />
+      {/* Modal Server only shown when Add and Update */}
       <Server
         show={modalShow}
         value={server}
@@ -138,7 +132,7 @@ const Servers = props => {
         onCancel={() => setModalShow(false)}
         onHide={() => setModalShow(false)}
         onSave={onSaveHandler}
-      />
+      />      
     </div>
   );
 };

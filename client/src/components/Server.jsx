@@ -7,6 +7,7 @@ import "./Server.css";
 
 const Server = props => {
   const { fields } = props;
+  console.log("in modal screen......", props.value)
   return (
     <Modal
       show={props.show}
