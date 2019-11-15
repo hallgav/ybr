@@ -3,9 +3,9 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Input from "./Input";
 
-import "./Server.css";
+import "./ServerDialog.css";
 
-const Server = props => {
+const ServerDialog = props => {
   const { fields } = props;
   return (
     <Modal
@@ -73,7 +73,6 @@ const Server = props => {
           value={props.value.provStore}
         />
 
-        <label htmlFor="use_store">Usable Storage (GB): </label>
         <Input
           label="Usable Storage (GB):"
           name={fields.useStore.name}
@@ -105,4 +104,4 @@ const Server = props => {
   );
 };
 
-export default Server;
+export default ServerDialog;

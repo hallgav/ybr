@@ -3,7 +3,7 @@ import "./Servers.css";
 import { YbrDataContext } from "../contexts/YbrDataContext";
 import GridToolbar from "../components/GridToolbar";
 import Grid from "../components/Grid";
-import Server from "./Server";
+import ServerDialog from "./ServerDialog";
 
 const fields = {
   serverName: { name: "server-name", id: "server_name", defaultValue: "" },
@@ -17,21 +17,20 @@ const fields = {
   guestOs: { name: "guest-os", id: "guest_os", defaultValue: "" }
 };
 
-const Servers = props => {
-  const setDefaultValue = () => {
-    return {
-      serverName: fields.serverName.defaultValue,
-      noVms: fields.noVms.defaultValue,
-      vCpu: fields.vCpu.defaultValue,
-      peakCpu: fields.peakCpu.defaultValue,
-      vRam: fields.vRam.defaultValue,
-      peakRam: fields.peakRam.defaultValue,
-      provStore: fields.provStore.defaultValue,
-      useStore: fields.useStore.defaultValue,
-      guestOs: fields.guestOs.defaultValue
-    };
+const setDefaultValue = () => {
+  return {
+    serverName: fields.serverName.defaultValue,
+    noVms: fields.noVms.defaultValue,
+    vCpu: fields.vCpu.defaultValue,
+    peakCpu: fields.peakCpu.defaultValue,
+    vRam: fields.vRam.defaultValue,
+    peakRam: fields.peakRam.defaultValue,
+    provStore: fields.provStore.defaultValue,
+    useStore: fields.useStore.defaultValue,
+    guestOs: fields.guestOs.defaultValue
   };
-
+};
+const Servers = props => {
   const ACTION_ADD = "ADD";
   const ACTION_UPDATE = "UPDATE";
 
@@ -125,7 +124,7 @@ const Servers = props => {
 
   const onDeleteHandler = () => {
     const newYbr = { ...ybr };
-    newYbr.servers = ybr.servers.filter((s, index) => index != server.index)
+    newYbr.servers = ybr.servers.filter((s, index) => index !== server.index)
     setYbr(newYbr);
     setModalShow(false);
   };
@@ -145,7 +144,7 @@ const Servers = props => {
         onRowLinkClick={onUpdateClickHandler}
       />
       {/* Modal Server only shown when Add and Update */}
-      <Server
+      <ServerDialog
         show={modalShow}
         onHide={() => setModalShow(false)}
         value={server.value}
