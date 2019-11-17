@@ -7,7 +7,7 @@ const Input = props => {
       <label htmlFor={props.id}>{props.label}</label>
       <input
           className="form-control"
-          type="text"
+          type={props.type ? props.type :"text"}
           name={props.name}
           id={props.id}
           onChange={props.onChange}

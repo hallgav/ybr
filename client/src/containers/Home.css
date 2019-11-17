@@ -7,15 +7,6 @@
   height: 5vmin;
 }
 
-.home-header {
-  text-align: left;
-  background-color: #282c34;
-  min-height: 5vh;
-  font-size: calc(10px + .5vmin);
-  color: white;
-  padding-left: 1rem;
-}
-
 .home-body {
   margin: 10px;
   }

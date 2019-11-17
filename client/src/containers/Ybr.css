@@ -26,5 +26,5 @@
 }
 
 .ybr-flexbox__content{
-
+  display: inline-block;
 }

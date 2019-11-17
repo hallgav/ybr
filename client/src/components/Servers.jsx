@@ -131,7 +131,6 @@ const Servers = props => {
 
   return (
     <div className="server-body">
-      <h2>{client}</h2>
       <GridToolbar
         heading="Servers:"
         count={servers.length}

@@ -1,5 +1,6 @@
 import React from "react";
 import "./SideMenu.css";
+import PageNav from "../components/PageNav";
 
 const Link = require("react-router-dom").Link
 const Redirect = require("react-router-dom").Redirect

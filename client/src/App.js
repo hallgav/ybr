@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import './App.css'
+import "./App.css";
 import Routes from "./routes";
-import SideMenu from "./containers/SideMenu";
+import { UserProvider } from "./contexts/UserContext";
 
 export default () => {
   return (
     <div className="app-layout">
+      <UserProvider>
       <Routes>
-        <SideMenu />
+        
       </Routes>
+
+      </UserProvider>
+
     </div>
   );
 };

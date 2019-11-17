@@ -41,7 +41,7 @@ const Applications = props => {
   const ACTION_UPDATE = "UPDATE";
 
   const [ybr, setYbr] = useContext(YbrDataContext);
-  const {client, headings, applications } = ybr;
+  const {headings, applications } = ybr;
   const [modalShow, setModalShow] = useState(false);
   const [application, setApplication] = useState({index: 0, value: setDefaultValue()});
   const [action, setAction] = useState(ACTION_ADD)
@@ -140,7 +140,6 @@ const Applications = props => {
 
   return (
     <div className="application-body">
-      <h2>{client}</h2>
       <GridToolbar
         heading="Applications:"
         count={applications.length}
