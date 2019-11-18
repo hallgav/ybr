@@ -7,7 +7,7 @@ import { FormGroup, FormControl, ControlLabel, Alert } from "react-bootstrap";
 const Login = props => {
   return (
     <div className="ybr-login-page">
-      <PageNav heading="YBR Login"></PageNav>
+      <PageNav heading="YBR Login" showSignUp={!props.signup}/>
       <div className="ybr-login-page__container">
         <form className="ybr-login-page__input" onSubmit={props.onSubmit}>
           <FormGroup controlId="email" bsSize="large">
@@ -19,14 +19,16 @@ const Login = props => {
               onChange={props.onChange}
             />
           </FormGroup>
-          <FormGroup controlId="pwd" bsSize="large">
+          <FormGroup controlId="password" bsSize="large">
             <ControlLabel>Password</ControlLabel>
             <FormControl
-              value={props.pwd}
+              value={props.password}
               onChange={props.onChange}
               type="password"
             />
           </FormGroup>
+          {props.signup ? <ConfirmPassword {...props}/> : null}
+
           <LoaderButton
             block
             bsSize="large"
@@ -43,6 +45,19 @@ const Login = props => {
     </div>
   );
 };
+
+const ConfirmPassword = props => {
+  return(
+    <FormGroup controlId="confirm-password" bsSize="large">
+    <ControlLabel>Confirm Password</ControlLabel>
+    <FormControl
+      value={props.confirmPassword}
+      onChange={props.onChange}
+      type="password"
+    />
+  </FormGroup>
+  )
+}
 
 const LoginError = props => {
   return (

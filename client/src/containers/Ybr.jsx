@@ -18,7 +18,7 @@ const Ybr = props => {
   return (
     <div className="home">
       <SideMenu />
-      <PageNav heading={id}>
+      <PageNav heading={id} showLogIn>
         <div className="ybr-flexbox">
           <div className="ybr-flexbox__panel">
             ASSETS

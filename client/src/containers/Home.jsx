@@ -12,7 +12,7 @@ function Home() {
     <CompanyDataProvider>
       <div className="home">
         <SideMenu />
-        <PageNav heading="YBR Home">
+        <PageNav heading="YBR Home" showLogIn>
           <Ybrs />
         </PageNav>
 

@@ -1,37 +1,29 @@
-import React from "react";
-import { BrowserRouter, Route} from "react-router-dom";
+import React, { useContext } from "react";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 
-import App from "../App";
 import Home from "../containers/Home";
 import Ybr from "../containers/Ybr";
-import ServersContainer from "../containers/ServersContainer";
-import ApplicationsContainer from "../containers/ApplicationsContainer";
-import LoginContainer from '../containers/LoginContainer'
-import SignupContainer from '../containers/SignupContainer'
-import SideMenu from "../containers/SideMenu";
+import LoginContainer from "../containers/LoginContainer";
+import {UserContext} from "../contexts/UserContext";
 
-export default () => (
-  <BrowserRouter>
+export default () => {
+  const [isAuth, setAuth] = useContext(UserContext);
+
+  return (
+    <BrowserRouter>
       <Route path="/" exact component={LoginContainer} />
       <Route path="/login" exact component={LoginContainer} />
-      <Route path="/signup" exact component={SignupContainer} />
-      <Route path="/home" exact component={Home} />
-      <Route path="/create" exact component={Create} />
-      <Route path="/search" exact component={Search} />
-      <Route path="/settings" exact component={Settings} />
-      <Route path="/ybr/:id" component={Ybr} />
-      {/* <Route path="/ybr/:id/server" exact component={ServersContainer} />
-      <Route path="/ybr/:id/application" exact component={ApplicationsContainer} /> */}
-  </BrowserRouter>
-);
+      <Route path="/signup" exact component={LoginContainer} />
+      <Route path="/home" exact component={isAuth ? Home : Login} />
+      <Route path="/create" exact component={isAuth ? Create : Login} />
+      <Route path="/search" exact component={isAuth ? Search : Login} />
+      <Route path="/settings" exact component={isAuth ? Settings : Login} />
+      <Route path="/ybr/:id" component={isAuth ? Ybr : Login} />
+    </BrowserRouter>
+  );
+};
 
-
-const Create = () => (
-  <h2>Create a new YBR</h2>
-);
-const Settings = () => (
-  <h2>Set Your Preferences</h2>
-);
-const Search = () => (
-  <h2>Search for a YBR</h2>
-);
+const Login = () => <Redirect to="/login"/>;
+const Create = () => <h2>Create a new YBR</h2>;
+const Settings = () => <h2>Set Your Preferences</h2>;
+const Search = () => <h2>Search for a YBR</h2>;

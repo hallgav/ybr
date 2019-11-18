@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import "./App.css";
 import Routes from "./routes";
@@ -8,10 +8,9 @@ export default () => {
   return (
     <div className="app-layout">
       <UserProvider>
-      <Routes>
-        
-      </Routes>
-
+        <Routes>
+          
+        </Routes>
       </UserProvider>
 
     </div>

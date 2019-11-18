@@ -12,7 +12,7 @@ const PageNav = props => {
   const [isAuth, setAuth] = useContext(UserContext);
 
   const onLogInClickHandler = () => {
-    history.push("/");
+    history.push("/login");
   };
 
   const onLogOutClickHandler = () => {
@@ -26,18 +26,22 @@ const PageNav = props => {
   };
   return (
     <div className="page-nav">
-      <Navbar staticTop inverse className="bg-light justify-content-between" expand="lg">
+      <Navbar
+        staticTop
+        inverse
+        className="bg-light justify-content-between"
+        expand="lg"
+      >
         <Navbar.Header>
           <Navbar.Brand>{props.heading}</Navbar.Brand>
         </Navbar.Header>
         <Nav pullRight>
           <NavItem>
             <PageNavButtons
-              isLoggedIn={isAuth}
               onClickLogIn={onLogInClickHandler}
               onClickLogOut={onLogOutClickHandler}
               onClickSignUp={onSignUpClickHandler}
-              history={history}
+              {...props}
             />
           </NavItem>
         </Nav>
@@ -48,40 +52,45 @@ const PageNav = props => {
 };
 
 const PageNavButtons = ({
-  isLoggedIn,
   onClickLogIn,
   onClickLogOut,
   onClickSignUp,
-  history
+  showLogIn,
+  showSignUp,
+  showLogOut
 }) => {
-  if (isLoggedIn) {
-    return (
-      <Button onClick={onClickLogOut} variant="outline-light" bsSize="sm">
-        Logout
-      </Button>
-    );
-  } else {
-    if (
-      history.location.pathname === "/" ||
-      history.location.pathname === "/login"
-    ) {
-      return (
-        <Button onClick={onClickSignUp} variant="outline-light" bsSize="sm">
-          Signup
-        </Button>
-      );
-    }
-    return (
-      <div className="nav-bar-auth">
-        <Button onClick={onClickSignUp} variant="outline-light" bsSize="sm">
-          Signup
-        </Button>
-        <Button onClick={onClickLogIn} variant="outline-light" bsSize="sm">
-          Login
-        </Button>
-      </div>
-    );
-  }
+  console.log( "show buttons" + showLogIn)
+  return (
+    <div className="nav-bar-auth">
+      {showLogIn ? LoginButton(onClickLogIn) : null}
+      {showSignUp ? SignupButton(onClickSignUp) : null}
+      {showLogOut ? LogoutButton(onClickLogOut) : null}
+    </div>
+  );
 };
 
 export default PageNav;
+
+const LoginButton = onClickLogIn => {
+  return (
+    <Button onClick={onClickLogIn} variant="outline-light" bsSize="sm">
+      Login
+    </Button>
+  );
+};
+
+const SignupButton = onClickSignUp => {
+  return (
+    <Button onClick={onClickSignUp} variant="outline-light" bsSize="sm">
+      Signup
+    </Button>
+  );
+};
+
+const LogoutButton = onClickLogOut => {
+  return (
+    <Button onClick={onClickLogOut} variant="outline-light" bsSize="sm">
+      Logout
+    </Button>
+  );
+};
