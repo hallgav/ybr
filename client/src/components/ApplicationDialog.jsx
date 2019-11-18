@@ -1,6 +1,5 @@
 import React from "react";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
+import {Button, Modal} from "react-bootstrap";
 import Input from "./Input";
 
 import "./ApplicationDialog.css";

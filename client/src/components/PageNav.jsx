@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import "./PageNav.css";
 import { UserContext } from "../contexts/UserContext";
 const Navbar = require("react-bootstrap").Navbar;
+const Nav = require("react-bootstrap").Nav;
+const NavItem = require("react-bootstrap").NavItem;
 const Button = require("react-bootstrap").Button;
 const useHistory = require("react-router-dom").useHistory;
 
@@ -24,20 +26,21 @@ const PageNav = props => {
   };
   return (
     <div className="page-nav">
-      <Navbar
-        bg="dark"
-        variant="dark"
-        className="bg-light justify-content-between"
-        expand="lg"
-      >
-        <Navbar.Brand>{props.heading}</Navbar.Brand>
-        <PageNavButtons
-          isLoggedIn={isAuth}
-          onClickLogIn={onLogInClickHandler}
-          onClickLogOut={onLogOutClickHandler}
-          onClickSignUp={onSignUpClickHandler}
-          history={history}
-        />
+      <Navbar staticTop inverse className="bg-light justify-content-between" expand="lg">
+        <Navbar.Header>
+          <Navbar.Brand>{props.heading}</Navbar.Brand>
+        </Navbar.Header>
+        <Nav pullRight>
+          <NavItem>
+            <PageNavButtons
+              isLoggedIn={isAuth}
+              onClickLogIn={onLogInClickHandler}
+              onClickLogOut={onLogOutClickHandler}
+              onClickSignUp={onSignUpClickHandler}
+              history={history}
+            />
+          </NavItem>
+        </Nav>
       </Navbar>
       {props.children}
     </div>
@@ -53,7 +56,7 @@ const PageNavButtons = ({
 }) => {
   if (isLoggedIn) {
     return (
-      <Button onClick={onClickLogOut} variant="outline-light" size="sm">
+      <Button onClick={onClickLogOut} variant="outline-light" bsSize="sm">
         Logout
       </Button>
     );
@@ -63,17 +66,17 @@ const PageNavButtons = ({
       history.location.pathname === "/login"
     ) {
       return (
-        <Button onClick={onClickSignUp} variant="outline-light" size="sm">
+        <Button onClick={onClickSignUp} variant="outline-light" bsSize="sm">
           Signup
         </Button>
       );
     }
     return (
       <div className="nav-bar-auth">
-        <Button onClick={onClickSignUp} variant="outline-light" size="sm">
+        <Button onClick={onClickSignUp} variant="outline-light" bsSize="sm">
           Signup
         </Button>
-        <Button onClick={onClickLogIn} variant="outline-light" size="sm">
+        <Button onClick={onClickLogIn} variant="outline-light" bsSize="sm">
           Login
         </Button>
       </div>

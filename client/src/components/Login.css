@@ -2,7 +2,19 @@
   width: 100%;
 }
 
+.ybr-login-page__container{
+  margin-top:80px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .ybr-login-page__input{
-  width: 50%;
-  
+  width: 300px;
+  height: 300px;
+}
+
+#ybr-login-page__error-alert{
+  margin-top: 20px;
 }

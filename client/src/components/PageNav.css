@@ -1,4 +1,6 @@
-
+.page-nav{
+  height: 30px;
+}
 .nav-bar-auth {
   float: right;
 }

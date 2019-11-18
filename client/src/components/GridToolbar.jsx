@@ -1,6 +1,6 @@
 import React from "react";
 import "./GridToolBar.css";
-import Badge from "react-bootstrap/Badge";
+import {Badge} from "react-bootstrap";
 
 const GridToolbar = props => {
   return (
