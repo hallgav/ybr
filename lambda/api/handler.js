@@ -11,7 +11,6 @@ exports.hello = async (event) => {
 }
 
 exports.applications = async (event) => {
-  console.log("in handler -----------------------");
   try {
     data = await controller.applications()
     return {
