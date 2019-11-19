@@ -28,7 +28,7 @@ const PageNav = props => {
     <div className="page-nav">
       <Navbar staticTop inverse>
         <Navbar.Header>
-          <Navbar.Brand pullLeft>{props.heading}</Navbar.Brand>
+          <Navbar.Brand>{props.heading}</Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
@@ -57,7 +57,6 @@ const PageNavButtons = ({
   showSignUp,
   showLogOut
 }) => {
-  console.log("show buttons" + showLogIn);
   return (
     <div className="nav-bar-buttons">
       {showLogIn ? LoginButton(onClickLogIn) : null}

@@ -4,9 +4,9 @@ import "./Grid.css";
 
 const Grid = ({ headings, data, onRowClick, onRowLinkClick }) => {
 
-  const renderCell = (parent, value, position) => {
+  const renderCell = (parent, value, position, rowId) => {
     //The first column is a "key" and has a link hook
-    return position === 0 ? <td><button onClick={(e) => onRowLinkClick(e, parent)}>{value}</button></td> : <td>{value}</td>
+    return position === 0 ? <td key={rowId+position} id={position}><button onClick={(e) => onRowLinkClick(e, parent)}>{value}</button></td> : <td key={rowId+position}>{value}</td>
   }
 
   renderCell.bind(this)
@@ -15,15 +15,15 @@ const Grid = ({ headings, data, onRowClick, onRowLinkClick }) => {
       <table>
         <thead>
           <tr>
-            {headings.map(h => (
-              <th>{h}</th>
+            {headings.map((h, index) => (
+              <th key={index}>{h}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {data.map((row, index) => (
-            <tr id={index} onClick={(e) => onRowClick(e, row, index)}>
-              {row.map((cell, i) => renderCell(row, cell, i)
+            <tr id={index} key={index} onClick={(e) => onRowClick(e, row, index)}>
+              {row.map((cell, i) => renderCell(row, cell, i, index)
               )}
             </tr>
           ))}

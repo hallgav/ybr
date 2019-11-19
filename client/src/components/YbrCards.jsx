@@ -8,8 +8,8 @@ const YbrCards = () => {
 
   return (
     <>
-      {value.map(y => (
-        <YbrCard card={y} />
+      {value.map((y, index) => (
+        <YbrCard key={index} card={y} />
       ))}
     </>
   );
