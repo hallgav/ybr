@@ -1,0 +1,8 @@
+# package directories
+node_modules
+jspm_packages
+search/node_modules
+search/env.json
+# Serverless directories
+packaged.yaml
+.aws-sam/

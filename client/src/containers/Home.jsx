@@ -10,7 +10,7 @@ import PageNav from "../components/PageNav";
 function Home() {
   return (
     <CompanyDataProvider>
-      <PageNav heading="YBR Home" showLogIn>
+      <PageNav heading="YBR Home" showLogOut>
         <div id="home__root">
           <SideMenu />
           <Ybrs />

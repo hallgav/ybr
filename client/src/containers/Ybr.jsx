@@ -17,7 +17,7 @@ const Ybr = props => {
   const { id } = useParams();
   return (
     <div>
-      <PageNav heading={id} showLogIn>
+      <PageNav heading={id} showLogOut>
         <div className="ybr-flexbox">
           <SideMenu />
           <div id="ybr-flexbox-body">
