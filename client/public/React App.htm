@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://localhost:3000/home -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="icon" href="http://localhost:3000/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Web site created using create-react-app">
+    <link rel="apple-touch-icon" href="http://localhost:3000/logo192.png">
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <link rel="stylesheet" href="./React App_files/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  <style>html body{
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.rootDiv{
+  width: 100%;
+}</style><style>.app-layout{
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+}</style><style>.ybr-card-container{
+  font-size: calc(10px + .5vmin);
+  color: slategrey;
+  margin: 3px;
+  padding-left: 1rem;
+  width: 250px;
+}</style><style>#home__root {
+  display: flex;
+  flex-flow: row;
+}
+
+.home-body {
+  margin: 0px;
+  }
+
+.home-body h3{
+  margin: 10px;
+  font-size: calc(10px + .5vmin);
+  color: slategrey;
+}
+
+.home-body__cards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+</style><style>.side-menu {
+  position: relative;
+  top: 0;
+  left: 0; 
+}
+
+.side-menu__pannel {
+  padding: 10px;
+  background-color: #222;
+  height: 100%;
+  font-size: 12px;
+
+}
+  
+.side-menu__pannel ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-menu__pannel li {
+  padding: 0 0.5rem;
+
+}
+
+.side-menu__pannel a {
+  text-decoration: none;
+  color: white;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.side-menu-item__active {
+  background-color: rgb(126, 189, 84);
+  border-radius: 3px;
+}</style><style>.page-nav{
+  padding: 0px;
+}
+
+.page-nav nav{
+  margin-bottom: 0px;
+}
+
+.nav-bar-buttons {
+  float: right;
+  margin-left: 10px;
+}
+</style><style>.ybr-flexbox {
+  display: flex;
+  flex-flow: row;
+}
+
+#ybr-flexbox-body {
+  display: flex;
+  flex-flow: row;
+}
+
+.ybr-flexbox__panel{
+  font-size: 12px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-right: 5px;
+  background-color: rgb(147, 212, 103);
+  color: white;
+  font-weight: bold;
+}
+.ybr-flexbox__panel ul{
+  list-style-type: none;
+  padding: 0;
+}
+.ybr-flexbox__panel li{
+  padding-left: 0.5rem;
+  margin-top: 5px;
+}
+
+.ybr-flexbox__panel a {
+  text-decoration: none;
+  color: white;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.ybr-flex-panel__active {
+  background-color: rgb(126, 189, 84);
+  border-radius: 3px;
+}</style><style>.application-body{
+  width: 100%;
+  padding: 5px;
+}
+</style><style>.grid-toolbar{
+ margin: 0;
+ padding-bottom: 2px;
+ padding-top: 4px;
+ padding-left: 6px;
+ background-color: rgb(232, 233, 238);
+}
+
+.grid-toolbar ul{
+  display: inline;
+  list-style-type: none;
+}
+
+.grid-toolbar li{
+  display: inline;
+}
+
+.grid-toolbar-heading{
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.grid-toolbar-heading__count{
+  margin-left: 5px;
+}
+
+
+.grid-toolbar button{
+  border-radius: .25rem;
+  font-size: x-small;  
+  font-weight: bolder;
+  margin-left: 5px;
+  background-color: #007bff;
+  color: white;
+  vertical-align: middle;
+}
+</style><style>.grid-main table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 2px;
+  border: 1px solid #dee2e6;
+}
+
+.grid-main thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+  border: inherit;
+  background-color: #212529;
+  color: #dee2e6;
+}
+
+.grid-main th {
+  font-size: 11px;
+  border: 1px solid #dee2e6;
+  padding: 0.3rem;
+}
+.grid-main tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.grid-main tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.grid-main td {
+  font-size: 11px;
+  border: 1px solid #dee2e6;
+  padding: 0.3rem;
+}
+
+/* Define the default color for all the table rows */
+/* Define the hover highlight color for the table row */
+.grid-main tr:hover td {
+  background-color: #cad9db;
+}
+
+.grid-main button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}</style><style>.input-component label{
+  margin-bottom: 0px;
+  font-size: 12px;
+  color: rgb(189, 189, 189);
+  font-weight: bold;
+}
+
+.input-component input{
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+</style><style></style><style>.server-body{
+  width: 100%;
+  padding: 5px;
+}
+
+</style><style></style><style>.ybr-login-page{
+  width: 100%;
+}
+
+.ybr-login-page__container{
+  margin-top:80px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ybr-login-page__input{
+  width: 300px;
+  height: 300px;
+}
+
+#ybr-login-page__error-alert{
+  margin-top: 20px;
+}</style><style>.LoaderButton .spinning.glyphicon {
+	margin-right: 7px;
+	top: 2px;
+	animation: spin 1s infinite linear;
+}
+@keyframes spin {
+	from {
+		transform: scale(1) rotate(0deg);
+	}
+	to {
+		transform: scale(1) rotate(360deg);
+	}
+}
+</style><script charset="utf-8" src="./React App_files/main.136ca78778cfb42be65d.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.d5d25ac74a63ec86fad1.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.cebd8884ea608fb43a68.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.e97def49eeca265e3463.hot-update.js"></script></head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><div class="app-layout"><div class="page-nav"><nav class="navbar navbar-inverse navbar-static-top"><div class="container"><div class="navbar-header"><span class="navbar-brand">YBR Home</span><button type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><div class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li role="presentation" class=""><a role="button" href="http://localhost:3000/home#"><div class="nav-bar-buttons"><button variant="outline-light" type="button" class="btn btn-sm btn-default">Login</button></div></a></li></ul></div></div></nav><div id="home__root"><div class="side-menu"><div class="side-menu__pannel"><ul><li><a aria-current="page" class="side-menu-item__active" href="http://localhost:3000/home">Home</a></li><li><a href="http://localhost:3000/create">Create</a></li><li><a href="http://localhost:3000/search">Search</a></li><li><a href="http://localhost:3000/settings">Settings</a></li></ul></div></div><div class="home-body"><h3>Recent</h3><div class="home-body__cards"><div class="ybr-card-container"><div class="panel panel-primary"><div class="panel-heading"><h4 class="panel-title">MLC Insurance</h4></div><div class="panel-body"><p>YBR to migrate data centre to AWS cloud</p><a href="http://localhost:3000/ybr/1000">Open</a></div></div></div><div class="ybr-card-container"><div class="panel panel-primary"><div class="panel-heading"><h4 class="panel-title">MLC Insurance</h4></div><div class="panel-body"><p>YBR to migrate data centre to AWS cloud</p><a href="http://localhost:3000/ybr/2000">Open</a></div></div></div><div class="ybr-card-container"><div class="panel panel-primary"><div class="panel-heading"><h4 class="panel-title">MLC Insurance</h4></div><div class="panel-body"><p>YBR to migrate data centre to AWS cloud</p><a href="http://localhost:3000/ybr/3000">Open</a></div></div></div><div class="ybr-card-container"><div class="panel panel-primary"><div class="panel-heading"><h4 class="panel-title">MLC Insurance</h4></div><div class="panel-body"><p>YBR to migrate data centre to AWS cloud</p><a href="http://localhost:3000/ybr/4000">Open</a></div></div></div><div class="ybr-card-container"><div class="panel panel-primary"><div class="panel-heading"><h4 class="panel-title">MLC Insurance</h4></div><div class="panel-body"><p>YBR to migrate data centre to AWS cloud</p><a href="http://localhost:3000/ybr/5000">Open</a></div></div></div></div><h3>Favourites</h3><div class="home-body__cards"></div></div></div></div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <script src="./React App_files/bundle.js"></script><script src="./React App_files/0.chunk.js"></script><script src="./React App_files/main.chunk.js"></script><script src="./React App_files/main.7a18a2327b33fe1db221.hot-update.js"></script>
+
+</body></html>

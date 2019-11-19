@@ -24,6 +24,7 @@ export default () => {
 };
 
 const Login = () => <Redirect to="/login"/>;
+
 const Create = () => <h2>Create a new YBR</h2>;
 const Settings = () => <h2>Set Your Preferences</h2>;
 const Search = () => <h2>Search for a YBR</h2>;

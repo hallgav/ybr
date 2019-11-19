@@ -2,7 +2,7 @@ import React from "react";
 import "./SideMenu.css";
 import PageNav from "../components/PageNav";
 
-const Link = require("react-router-dom").Link
+const NavLink = require("react-router-dom").NavLink
 const Redirect = require("react-router-dom").Redirect
 
 const SideMenu = props => (
@@ -10,16 +10,16 @@ const SideMenu = props => (
     <div className="side-menu__pannel">
       <ul>
         <li key="1">
-          <Link to="/home">Home</Link>
+          <NavLink to="/home" activeClassName="side-menu-item__active">Home</NavLink>
         </li>
         <li key="2">
-          <Link to="/create">Create</Link>
+          <NavLink to="/create" activeClassName="side-menu-item__active">Create</NavLink>
         </li>
         <li key="3">
-          <Link to="/search">Search</Link>
+          <NavLink to="/search" activeClassName="side-menu-item__active">Search</NavLink>
         </li>
         <li key="4">
-          <Link to="/settings">Settings</Link>
+          <NavLink to="/settings" activeClassName="side-menu-item__active">Settings</NavLink>
         </li>
       </ul>
     </div>

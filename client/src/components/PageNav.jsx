@@ -26,25 +26,23 @@ const PageNav = props => {
   };
   return (
     <div className="page-nav">
-      <Navbar
-        staticTop
-        inverse
-        className="bg-light justify-content-between"
-        expand="lg"
-      >
+      <Navbar staticTop inverse>
         <Navbar.Header>
-          <Navbar.Brand>{props.heading}</Navbar.Brand>
+          <Navbar.Brand pullLeft>{props.heading}</Navbar.Brand>
+          <Navbar.Toggle />
         </Navbar.Header>
-        <Nav pullRight>
-          <NavItem>
-            <PageNavButtons
-              onClickLogIn={onLogInClickHandler}
-              onClickLogOut={onLogOutClickHandler}
-              onClickSignUp={onSignUpClickHandler}
-              {...props}
-            />
-          </NavItem>
-        </Nav>
+        <Navbar.Collapse>
+          <Nav pullRight>
+            <NavItem>
+              <PageNavButtons
+                onClickLogIn={onLogInClickHandler}
+                onClickLogOut={onLogOutClickHandler}
+                onClickSignUp={onSignUpClickHandler}
+                {...props}
+              />
+            </NavItem>
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
       {props.children}
     </div>
@@ -59,9 +57,9 @@ const PageNavButtons = ({
   showSignUp,
   showLogOut
 }) => {
-  console.log( "show buttons" + showLogIn)
+  console.log("show buttons" + showLogIn);
   return (
-    <div className="nav-bar-auth">
+    <div className="nav-bar-buttons">
       {showLogIn ? LoginButton(onClickLogIn) : null}
       {showSignUp ? SignupButton(onClickSignUp) : null}
       {showLogOut ? LogoutButton(onClickLogOut) : null}

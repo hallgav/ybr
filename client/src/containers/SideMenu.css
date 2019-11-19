@@ -6,9 +6,10 @@
 
 .side-menu__pannel {
   padding: 10px;
-  background-color: #f0f0f0;
+  background-color: #222;
   height: 100%;
   font-size: 12px;
+
 }
   
 .side-menu__pannel ul {
@@ -19,5 +20,19 @@
 
 .side-menu__pannel li {
   padding: 0 0.5rem;
+  margin-bottom: 5px;
 }
 
+.side-menu__pannel a {
+  text-decoration: none;
+  color: white;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.side-menu-item__active {
+  background-color: rgb(75, 73, 73);
+  border-radius: 3px;
+}

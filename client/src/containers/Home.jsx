@@ -10,13 +10,12 @@ import PageNav from "../components/PageNav";
 function Home() {
   return (
     <CompanyDataProvider>
-      <div className="home">
-        <SideMenu />
-        <PageNav heading="YBR Home" showLogIn>
+      <PageNav heading="YBR Home" showLogIn>
+        <div id="home__root">
+          <SideMenu />
           <Ybrs />
-        </PageNav>
-
-      </div>
+        </div>
+      </PageNav>
     </CompanyDataProvider>
   );
 }
@@ -25,14 +24,14 @@ export default Home;
 
 const Ybrs = props => {
   return (
-    <div>
+    <div className="home-body">
       <h3>Recent</h3>
-      <div className="home-body__recent">
+      <div className="home-body__cards">
         <YbrCards></YbrCards>
       </div>
 
       <h3>Favourites</h3>
-      <div className="home-body__favourite"></div>
+      <div className="home-body__cards"></div>
     </div>
   );
 };

@@ -1,14 +1,10 @@
-.home {
+#home__root {
   display: flex;
   flex-flow: row;
 }
 
-.home-logo {
-  height: 5vmin;
-}
-
 .home-body {
-  margin: 10px;
+  margin: 0px;
   }
 
 .home-body h3{
@@ -17,19 +13,8 @@
   color: slategrey;
 }
 
-.home-body__recent {
+.home-body__cards {
   display: flex;
-  align-content: flex-start;
   flex-wrap: wrap;
   flex-direction: row;
-}
-
-.home-body__favourite {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.home-link {
-  color: #09d3ac;
 }

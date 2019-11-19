@@ -1,10 +1,12 @@
 .page-nav{
-  height: 30px;
-}
-.nav-bar-auth {
-  float: right;
+  padding: 0px;
 }
 
-.nav-bar-auth button{
+.page-nav nav{
+  margin-bottom: 0px;
+}
+
+.nav-bar-buttons {
+  float: right;
   margin-left: 10px;
 }

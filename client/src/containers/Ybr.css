@@ -3,28 +3,38 @@
   flex-flow: row;
 }
 
+#ybr-flexbox-body {
+  display: flex;
+  flex-flow: row;
+}
+
 .ybr-flexbox__panel{
-  width: 120px;
   font-size: 12px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-right: 5px;
+  background-color: #333;
+  color: white;
+  font-weight: bold;
 }
 .ybr-flexbox__panel ul{
   list-style-type: none;
-  margin: 0;
   padding: 0;
 }
 .ybr-flexbox__panel li{
-  padding: 0 0.5rem;
+  padding-left: 0.5rem;
+  margin-top: 5px;
 }
 
 .ybr-flexbox__panel a {
   text-decoration: none;
+  color: white;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
-
-.ybr-flexbox__panel a:hover,
-.ybr-flexbox__panel a:active {
-  color: #fa923f;
-}
-
-.ybr-flexbox__content{
-  display: inline-block;
+.ybr-flex-panel__active {
+  background-color: rgb(75, 73, 73);
+  border-radius: 3px;
 }
