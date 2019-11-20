@@ -1,6 +1,7 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
+import { API } from "aws-amplify";
 
-const getYbrData = (ybr_id) => {
+const getYbrData = ybr_id => {
   //Use the ybr_id to get the ybr data
   return {
     ybrId: 1,
@@ -30,56 +31,8 @@ const getYbrData = (ybr_id) => {
         "Assignee"
       ]
     },
-    servers: [
-      [
-        "ART02DLDVDB01",
-        1,
-        12,
-        0.9,
-        64,
-        0.9,
-        3450,
-        3450,
-        "Microsoft Windows Server 2016 (64-bit)"
-      ],
-      [
-        "END02SNDBOXAP20",
-        1,
-        2,
-        0.8,
-        64,
-        0.9,
-        64,
-        64,
-        "Red Hat Enterprise Linux 7 (64-bit)"
-      ]
-    ],
-    applications: [
-      [
-        "CAS",
-        "",
-        "",
-        "CAS (Compliance Automation Server)  enables insurance organizations to automate monitoring and protection against leading edge fraud and leakage",
-        "",
-        "",
-        "Rehost",
-        "",
-        "",
-        "Gavin"
-      ],
-      [
-        "SecureWorks",
-        "",
-        "SecureWorks. Partnered with Dell",
-         "MSSP for digital platform.",
-        "SEC",
-        "",
-        "Rehost",
-        "",
-        "Complete",
-        "Gavin"
-      ]
-    ]
+    servers: [["", 0, 0, 0, 0, 0, 0, 0, ""]],
+    applications: [["", "", "", "", "", "", "", "", "", ""]]
   };
 };
 
@@ -87,6 +40,22 @@ export const YbrDataContext = createContext();
 
 export const YbrDataProvider = props => {
   const [ybr, setYbr] = useState(() => getYbrData(props.ybrId));
+
+  const corsHeader = {
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    }
+  };
+  const getApplications = async () => await API.get("ybrApiCall", "/applications", corsHeader);
+
+  getApplications()
+  .then(data => {
+    console.log("we got the data ------------------------>", data);
+    let newYbr = { ...ybr };
+    newYbr.applications = data;
+    setYbr(newYbr);
+  })
+
   return (
     <YbrDataContext.Provider value={[ybr, setYbr]}>
       {props.children}

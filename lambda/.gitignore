@@ -6,3 +6,4 @@ search/env.json
 # Serverless directories
 packaged.yaml
 .aws-sam/
+test

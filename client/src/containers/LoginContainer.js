@@ -38,6 +38,19 @@ const LoginContainer = (props) => {
       setIsLoading(false)
       return;
     }
+    if (isSignup) {
+      try {
+        const newUser = await Auth.signUp({
+          username: email,
+          password: password
+        });
+      } catch (e) {
+        setErrorMessage("Could not signup at this time: " + e.message.replace("$", "") + ". Please try again later");
+        setHasError(true);
+        setIsLoading(false);
+        return;
+      }
+    }
     try {
 			await Auth.signIn(email, password);
       setAuth(true);

@@ -15,6 +15,22 @@ Resources:
         DefaultAuthorizer: AWS_IAM
         InvokeRole: NONE 
         AddDefaultAuthorizerToCorsPreflight: False
+
+  # YbrLambdaAthenaRole:
+  #   Type: 'AWS::IAM::Role'
+  #   Properties: 
+  #     AssumeRolePolicyDocument: Json
+  #     Description: String
+  #     ManagedPolicyArns: 
+  #       - String
+  #     MaxSessionDuration: Integer
+  #     Path: String
+  #     PermissionsBoundary: String
+  #     Policies: 
+  #       - Policy
+  #     RoleName: String
+  #     Tags: 
+  #       - Tag    
     
   ApplicationsFunction:
     Type: 'AWS::Serverless::Function'
@@ -22,7 +38,7 @@ Resources:
       Handler: handler.applications
       Runtime: nodejs10.x
       CodeUri: ./api
-      Timeout: 3000
+      Timeout: 300
       Events:
         ApplicationsAPI:
           Type: Api

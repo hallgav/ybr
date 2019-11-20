@@ -23,7 +23,7 @@ Amplify.configure({
 				region: config.apiGateway.REGION
 			},
 			{
-				name: 'godwitApiCall',
+				name: 'ybrApiCall',
 				endpoint: config.apiGateway.URL,
 				region: config.apiGateway.REGION
 			}

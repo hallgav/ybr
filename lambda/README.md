@@ -12,6 +12,6 @@ In the project directory, you can run:
 run this from the lambda folder:
 
 ApplicationsFunction
-sam local invoke ApplicationsFunction --event ./api/test/applications_event.json --template template.yml --log-file ./api/test/sam.log
-sam local invoke HelloFunction --event ./api/test/applications_event.json --template template.yml --log-file ./api/test/sam.log
+sam local invoke ApplicationsFunction --event ./test/applications_event.json --template template.yml --log-file ./test/sam.log
+sam local invoke HelloFunction --event ./test/applications_event.json --template template.yml --log-file ./test/sam.log
 
