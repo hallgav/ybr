@@ -48,15 +48,15 @@ const Servers = props => {
   const servers = props.value;
 
   const [modalShow, setModalShow] = useState(false);
-  const [server, setServer] = useState({index: 0, value: setDefaultValue()});
-  const [action, setAction] = useState(ACTION_ADD)
+  const [server, setServer] = useState({ index: 0, value: setDefaultValue() });
+  const [action, setAction] = useState(ACTION_ADD);
 
   const onAddClickHandler = () => {
-    setServer({index: 0, value: setDefaultValue()});
+    setServer({ index: 0, value: setDefaultValue() });
     setAction(ACTION_ADD);
     setModalShow(true);
   };
-  
+
   const onUpdateClickHandler = () => {
     setAction(ACTION_UPDATE);
     setModalShow(true);
@@ -64,7 +64,7 @@ const Servers = props => {
 
   const onRowClickHandler = (e, row, index) => {
     //Set the server object to the current clicked row
-    const cur_server = {index: index, value: setDefaultValue()};
+    const cur_server = { index: index, value: setDefaultValue() };
 
     let i = 0;
     for (let key in cur_server.value) {
@@ -75,8 +75,7 @@ const Servers = props => {
       setServer(cur_server);
     } catch (error) {
       console.error(error);
-    }    
-
+    }
   };
 
   const onChangeHandler = e => {
@@ -116,7 +115,6 @@ const Servers = props => {
   };
 
   const onSaveHandler = () => {
-
     let server_arr = Object.values(server.value);
     switch (action) {
       case ACTION_ADD:
@@ -124,7 +122,7 @@ const Servers = props => {
         break;
       case ACTION_UPDATE:
         props.onUpdate(server_arr, server.index);
-        break;    
+        break;
       default:
         break;
     }
@@ -132,7 +130,7 @@ const Servers = props => {
   };
 
   const onDeleteHandler = () => {
-    props.onDelete(server.index)
+    props.onDelete(server.index);
     setModalShow(false);
   };
 
@@ -159,7 +157,7 @@ const Servers = props => {
         onCancel={() => setModalShow(false)}
         onDelete={onDeleteHandler}
         onSave={onSaveHandler}
-      />      
+      />
     </div>
   );
 };

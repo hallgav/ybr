@@ -18,7 +18,7 @@ export default () => {
       <Route path="/create" exact component={isAuth ? Create : Login} />
       <Route path="/search" exact component={isAuth ? Search : Login} />
       <Route path="/settings" exact component={isAuth ? Settings : Login} />
-      <Route path="/ybr/:id" component={isAuth ? YbrContainer : Login} />
+      <Route path="/ybr/:id" exact component={isAuth ? YbrContainer : Login} />
     </BrowserRouter>
   );
 };

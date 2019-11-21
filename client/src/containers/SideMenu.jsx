@@ -23,7 +23,6 @@ const SideMenu = props => (
         </li>
       </ul>
     </div>
-    <Redirect to="/home"/>
   </div>
 );
 

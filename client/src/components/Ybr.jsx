@@ -7,7 +7,11 @@ import ServersContainer from "../containers/ServersContainer";
 import {Button} from "react-bootstrap";
 
 const Ybr = props => {
-  const [selectedAsset, setSelectAsset] = useState("Servers");
+  const [selectedAsset, setSelectAsset] = useState("servers");
+
+  const onClickHandler = e => {
+    setSelectAsset(e.target.id)
+  }
 
   return (
     <div>
@@ -19,15 +23,15 @@ const Ybr = props => {
               ASSETS
               <ul id="nav">
                 <li key="1">
-                  <Button>Servers</Button>
+                  <Button id="servers" onClick={onClickHandler}>Servers</Button>
                 </li>
                 <li key="2">
-                  <Button>Applications</Button>
+                  <Button id="applications" onClick={onClickHandler}>Applications</Button>
                 </li>
               </ul>
             </div>
             <div className="ybr-flexbox__content">
-              {selectedAsset === "Servers" ? <ServersContainer value={props.servers}/> : <ApplicationsContainer value={props.applications}/>}
+              {selectedAsset === "servers" ? <ServersContainer value={props.servers}/> : <ApplicationsContainer value={props.applications}/>}
             </div>
           </div>
         </div>
