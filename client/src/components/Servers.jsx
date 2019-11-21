@@ -1,9 +1,20 @@
 import React, { useContext, useState } from "react";
 import "./Servers.css";
-import { YbrDataContext } from "../contexts/YbrDataContext";
 import GridToolbar from "../components/GridToolbar";
 import Grid from "../components/Grid";
 import ServerDialog from "./ServerDialog";
+
+const headings = [
+  "Name",
+  "# of VMs",
+  "vCPU",
+  "Peak CPU Utilization (%)",
+  "vRAM (GB)",
+  "Peak vRAM Utilization (%)",
+  "Provisioned Storage (GB)",
+  "Usable Storage (GB)",
+  "Guest OS"
+];
 
 const fields = {
   serverName: { name: "server-name", id: "server_name", defaultValue: "" },
@@ -34,8 +45,8 @@ const Servers = props => {
   const ACTION_ADD = "ADD";
   const ACTION_UPDATE = "UPDATE";
 
-  const [ybr, setYbr] = useContext(YbrDataContext);
-  const {client, headings, servers } = ybr;
+  const servers = props.value;
+
   const [modalShow, setModalShow] = useState(false);
   const [server, setServer] = useState({index: 0, value: setDefaultValue()});
   const [action, setAction] = useState(ACTION_ADD)
@@ -106,26 +117,22 @@ const Servers = props => {
 
   const onSaveHandler = () => {
 
-    const newYbr = { ...ybr };
     let server_arr = Object.values(server.value);
     switch (action) {
       case ACTION_ADD:
-        newYbr.servers = [...newYbr.servers, server_arr];
+        props.onAdd(server_arr);
         break;
       case ACTION_UPDATE:
-        newYbr.servers[server.index] = server_arr;
+        props.onUpdate(server_arr, server.index);
         break;    
       default:
         break;
     }
-    setYbr(newYbr);
     setModalShow(false);
   };
 
   const onDeleteHandler = () => {
-    const newYbr = { ...ybr };
-    newYbr.servers = ybr.servers.filter((s, index) => index !== server.index)
-    setYbr(newYbr);
+    props.onDelete(server.index)
     setModalShow(false);
   };
 
@@ -138,7 +145,7 @@ const Servers = props => {
       />
       <Grid
         data={servers}
-        headings={headings.servers}
+        headings={headings}
         onRowClick={onRowClickHandler}
         onRowLinkClick={onUpdateClickHandler}
       />

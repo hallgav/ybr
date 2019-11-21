@@ -1,18 +1,18 @@
 var controller = require("./controller");
 
-exports.hello = async (event) => {
-  return {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    },
-    body: 'Authenticated call!'
-  }
-}
-
 exports.applications = async (event) => {
+  let ybrId = 0;
   try {
-    data = await controller.applications()
+    //get ybr parameter value
+    ybrId = event.pathParameters.ybrId;
+  } catch (error) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify(error, null, 2)
+    };
+  }
+  try {
+    data = await controller.getApplications()
     return {
       statusCode: 200,
       headers: {

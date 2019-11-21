@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 
 import Home from "../containers/Home";
-import Ybr from "../containers/Ybr";
+import YbrContainer from "../containers/YbrContainer";
 import LoginContainer from "../containers/LoginContainer";
 import {UserContext} from "../contexts/UserContext";
 
@@ -18,7 +18,7 @@ export default () => {
       <Route path="/create" exact component={isAuth ? Create : Login} />
       <Route path="/search" exact component={isAuth ? Search : Login} />
       <Route path="/settings" exact component={isAuth ? Settings : Login} />
-      <Route path="/ybr/:id" component={isAuth ? Ybr : Login} />
+      <Route path="/ybr/:id" component={isAuth ? YbrContainer : Login} />
     </BrowserRouter>
   );
 };

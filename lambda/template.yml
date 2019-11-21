@@ -37,14 +37,44 @@ Resources:
     Properties:
       Handler: handler.applications
       Runtime: nodejs10.x
-      CodeUri: ./api
+      CodeUri: ./applications
       Timeout: 300
       Events:
         ApplicationsAPI:
           Type: Api
           Properties:
             RestApiId: !Ref MyApi
-            Path: /applications
+            Path: /ybr/:ybrId/applications
+            Method: GET
+
+  ServersFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: handler.servers
+      Runtime: nodejs10.x
+      CodeUri: ./servers
+      Timeout: 300
+      Events:
+        ServersAPI:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /ybr/:ybrId/servers
+            Method: GET
+  
+  YbrFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: handler.ybr
+      Runtime: nodejs10.x
+      CodeUri: ./ybr
+      Timeout: 300
+      Events:
+        YbrAPI:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /ybr/:ybrID
             Method: GET
 
   HelloFunction:

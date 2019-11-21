@@ -1,15 +1,33 @@
 import React from 'react';
-import {YbrDataProvider} from "../contexts/YbrDataContext"
 import Servers from "../components/Servers"
-const useParams = require("react-router-dom").useParams;
 
 
 const ServersContainer = props => {
-  const {id}  = useParams()
+  const [servers, setServers] = props.value;
+
+  const onUpdateHandler = (value, index) => {
+    const newServers = [...Servers];
+    newServers[index] = value;
+    setServers(newServers);
+  };
+
+  const onAddHandler = server_arr => {
+    setServers([...servers, server_arr]);
+  };
+
+  const onDeleteHandler = value => {
+    const newServers = servers.filter((a, index) => index !== value);
+
+    setServers(newServers);
+  };
+
   return (
-    <YbrDataProvider ybrId={id}>
-      <Servers/>
-    </YbrDataProvider>
+    <Servers
+      value={servers}
+      onUpdate={onUpdateHandler}
+      onDelete={onDeleteHandler}
+      onAdd={onAddHandler}
+    />
   );
 }
 

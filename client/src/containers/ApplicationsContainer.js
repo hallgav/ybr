@@ -1,16 +1,33 @@
-import React from 'react';
-import {YbrDataProvider} from "../contexts/YbrDataContext"
-import Applications from "../components/Applications"
-const useParams = require("react-router-dom").useParams;
-
+import React from "react";
+import Applications from "../components/Applications";
 
 const ApplicationsContainer = props => {
-  const {id}  = useParams()
+  const [applications, setApplications] = props.value;
+
+  const onUpdateHandler = (value, index) => {
+    const newApplications = [...applications];
+    newApplications[index] = value;
+    setApplications(newApplications);
+  };
+
+  const onAddHandler = application_arr => {
+    setApplications([...applications, application_arr]);
+  };
+
+  const onDeleteHandler = value => {
+    const newApplications = applications.filter((a, index) => index !== value);
+
+    setApplications(newApplications);
+  };
+
   return (
-    <YbrDataProvider ybrId={id}>
-      <Applications/>
-    </YbrDataProvider>
+    <Applications
+      value={applications}
+      onUpdate={onUpdateHandler}
+      onDelete={onDeleteHandler}
+      onAdd={onAddHandler}
+    />
   );
-}
+};
 
 export default ApplicationsContainer;

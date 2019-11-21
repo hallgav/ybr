@@ -1,6 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import "./Applications.css";
-import { YbrDataContext } from "../contexts/YbrDataContext";
 import GridToolbar from "../components/GridToolbar";
 import Grid from "../components/Grid";
 import ApplicationDialog from "./ApplicationDialog";
@@ -33,15 +32,26 @@ const setDefaultValue = () => {
   };
 };
 
+const headings = [
+  "App/ Vendor",
+  "Version (if applicable)",
+  "Vendor",
+  "Description",
+  "Platform",
+  "Hosting",
+  "6R",
+  "Notes",
+  "Status",
+  "Assignee"
+]
 
 
 const Applications = props => {
  
   const ACTION_ADD = "ADD";
   const ACTION_UPDATE = "UPDATE";
+  const applications = props.value
 
-  const [ybr, setYbr] = useContext(YbrDataContext);
-  const {headings, applications } = ybr;
   const [modalShow, setModalShow] = useState(false);
   const [application, setApplication] = useState({index: 0, value: setDefaultValue()});
   const [action, setAction] = useState(ACTION_ADD)
@@ -115,26 +125,23 @@ const Applications = props => {
 
   const onSaveHandler = () => {
 
-    const newYbr = { ...ybr };
     let application_arr = Object.values(application.value);
     switch (action) {
       case ACTION_ADD:
-        newYbr.applications = [...newYbr.applications, application_arr];
+        props.onAdd(application_arr)
         break;
       case ACTION_UPDATE:
-        newYbr.applications[application.index] = application_arr;
+        props.onUpdate(application_arr, application.index)
         break;    
       default:
         break;
     }
-    setYbr(newYbr);
     setModalShow(false);
   };
 
   const onDeleteHandler = () => {
-    const newYbr = { ...ybr };
-    newYbr.applications = ybr.applications.filter((s, index) => index !== application.index)
-    setYbr(newYbr);
+    props.onDelete(application.index)
+
     setModalShow(false);
   };
 
@@ -147,7 +154,7 @@ const Applications = props => {
       />
       <Grid
         data={applications}
-        headings={headings.applications}
+        headings={headings}
         onRowClick={onRowClickHandler}
         onRowLinkClick={onUpdateClickHandler}
       />

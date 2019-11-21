@@ -1,9 +1,9 @@
 //var _ = require("lodash");
-var repo = require("./athena-repo");
+var repo = require("../repositories/athena-repo");
 
-exports.applications = async () => {
+exports.getServers = async (ybrId) => {
   try {
-    const result = await repo.read("select * from test_application_dev");
+    const result = await repo.read("select * from test_server_dev");
 
     const output = result.map(r => {
       return [
