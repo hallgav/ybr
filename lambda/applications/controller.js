@@ -1,5 +1,5 @@
 //var _ = require("lodash");
-var repo = require("../repositories/athena-repo");
+var repo = require("./athena-repo");
 
 exports.getApplications = async (ybrId) => {
   try {

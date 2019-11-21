@@ -1,0 +1,22 @@
+CREATE EXTERNAL TABLE `test_application_dev`(
+  `app/ vendor` string COMMENT 'from deserializer', 
+  `version (if applicable)` string COMMENT 'from deserializer', 
+  `vendor` string COMMENT 'from deserializer', 
+  `descr` string COMMENT 'from deserializer', 
+  `platform` string COMMENT 'from deserializer', 
+  `hosting` string COMMENT 'from deserializer', 
+  `6r` string COMMENT 'from deserializer', 
+  `notes` string COMMENT 'from deserializer', 
+  `status` string COMMENT 'from deserializer', 
+  `assignee` string COMMENT 'from deserializer')
+ROW FORMAT SERDE 
+  'org.apache.hadoop.hive.serde2.OpenCSVSerde' 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.mapred.TextInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION
+  's3://gavin-hall-ybr-sources/test-client/application'
+TBLPROPERTIES (
+  'transient_lastDdlTime'='1573796554',
+  "skip.header.line.count"="1")

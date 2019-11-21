@@ -24,15 +24,26 @@ const YbrContainer = (props) => {
       }
     };
     
-    const getApplications = async () => await API.get("ybrApiCall", "/applications", corsHeader);
+    const getApplications = async () => await API.get("ybrApiCall", "/ybr/" + props.ybrId + "/applications", corsHeader);
+    const getServers = async () => await API.get("ybrApiCall", "/ybr/" + props.ybrId + "/servers", corsHeader);
   
+    getServers()
+    .then(data => {
+      console.log("we got the servers ------------------------>", data);
+      setServers(data);
+    })
+    .catch(error => {
+      console.error("Error loading Servers --------------: ", error)
+    }
+    )
+
     getApplications()
     .then(data => {
-      console.log("we got the data ------------------------>", data);
+      console.log("we got the applications ------------------------>", data);
       setApplications(data);
     })
   }, [])
-
+  
   return ( 
       <Ybr value={ybr} servers={[servers, setServers]} applications={[applications, setApplications]}/>
    );

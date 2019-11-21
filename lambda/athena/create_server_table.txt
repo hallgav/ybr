@@ -1,0 +1,30 @@
+CREATE EXTERNAL TABLE `test_server_dev`(
+  `Name` string COMMENT 'from deserializer', 
+  `HostedApplication` string COMMENT 'from deserializer', 
+  `DC` string COMMENT 'from deserializer', 
+  `Power On or Off` string COMMENT 'from deserializer', 
+  `FolderPath` string COMMENT 'from deserializer', 
+  `GuestOS` string COMMENT 'from deserializer', 
+  `Environment deliniation` string COMMENT 'from deserializer', 
+  `BusinessGroup` string COMMENT 'from deserializer', 
+  `Biz Group Exp` string COMMENT 'from deserializer', 
+  `TPM` string COMMENT 'from deserializer',
+  `BPO` string COMMENT 'from deserializer',
+  `TotalvCPU` string COMMENT 'from deserializer',
+  `CoresPerSocket` string COMMENT 'from deserializer',
+  `TotalSockets` string COMMENT 'from deserializer',
+  `MemoryGB` string COMMENT 'from deserializer',
+  `DiskAllocationGB` string COMMENT 'from deserializer',
+  `6 R` string COMMENT 'from deserializer',
+  `Reasoning` string COMMENT 'from deserializer')
+ROW FORMAT SERDE 
+  'org.apache.hadoop.hive.serde2.OpenCSVSerde' 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.mapred.TextInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION
+  's3://gavin-hall-ybr-sources/test-client/server'
+TBLPROPERTIES (
+  'transient_lastDdlTime'='1573796554',
+  "skip.header.line.count"="1")
