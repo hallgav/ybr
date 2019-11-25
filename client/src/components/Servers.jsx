@@ -3,6 +3,8 @@ import "./Servers.css";
 import GridToolbar from "../components/GridToolbar";
 import Grid from "../components/Grid";
 import ServerDialog from "./ServerDialog";
+import ServerChart from "./ServerChart";
+
 
 const headings = [
   "Name",
@@ -50,6 +52,8 @@ const Servers = props => {
   const [modalShow, setModalShow] = useState(false);
   const [server, setServer] = useState({ index: 0, value: setDefaultValue() });
   const [action, setAction] = useState(ACTION_ADD);
+
+  const [showChart, setShowChart] = useState(false);
 
   const onAddClickHandler = () => {
     setServer({ index: 0, value: setDefaultValue() });
@@ -134,20 +138,55 @@ const Servers = props => {
     setModalShow(false);
   };
 
+  const onChartClickHandler = () => {
+    console.log("Showing chart");
+    setShowChart(!showChart);
+  };
+
+  const get6RGroups = () => {
+    var groupData = [];
+    servers.map(value => {
+      if (!groupData[value[6]]) {
+        groupData[value[6]] = 0;
+      }
+      groupData[value[6]] += 1;
+    });
+
+    return groupData;
+  };
+
+  const getChartData = () => {
+    var groupData = get6RGroups();
+
+    var chartData = [["6R Hosting", "Number of Hosts"]];
+    for (var key in groupData) {
+      chartData.push([key, groupData[key]]);
+    }
+
+    return chartData;
+  };
+
   return (
     <div className="server-body">
       <GridToolbar
         heading="Servers:"
         count={servers.length}
         onAdd={onAddClickHandler}
-      />
-      <Grid
-        data={servers}
-        headings={headings}
-        onRowClick={onRowClickHandler}
-        onRowLinkClick={onUpdateClickHandler}
+        onChartClick={onChartClickHandler}
+        ChartButtonText={showChart ? "Grid" : "Chart"}
         isLoading={props.isLoading}
       />
+      {showChart ? (
+        <ServerChart data={getChartData()} />
+      ) : (
+        <Grid
+          data={servers}
+          headings={headings}
+          onRowClick={onRowClickHandler}
+          onRowLinkClick={onUpdateClickHandler}
+          isLoading={props.isLoading}
+        />
+      )}
       {/* Modal Server only shown when Add and Update */}
       <ServerDialog
         show={modalShow}

@@ -7,7 +7,7 @@ const ServersContainer = props => {
   const [servers, setServers, isServersLoading] = props.value;
 
   const onUpdateHandler = (value, index) => {
-    const newServers = [...Servers];
+    const newServers = [...servers];
     newServers[index] = value;
     setServers(newServers);
   };

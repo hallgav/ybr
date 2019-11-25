@@ -3,9 +3,14 @@ import "./Applications.css";
 import GridToolbar from "../components/GridToolbar";
 import Grid from "../components/Grid";
 import ApplicationDialog from "./ApplicationDialog";
+import ApplicationChart from "./ApplicationChart";
 
 const fields = {
-  applicationName: { name: "application-name", id: "application_name", defaultValue: "" },
+  applicationName: {
+    name: "application-name",
+    id: "application_name",
+    defaultValue: ""
+  },
   version: { name: "version_no", id: "version-no", defaultValue: 0 },
   vendor: { name: "vendor", id: "vendor", defaultValue: 0 },
   description: { name: "app_desc", id: "app-desc", defaultValue: 0 },
@@ -43,25 +48,28 @@ const headings = [
   "Notes",
   "Status",
   "Assignee"
-]
-
+];
 
 const Applications = props => {
- 
   const ACTION_ADD = "ADD";
   const ACTION_UPDATE = "UPDATE";
-  const applications = props.value
+  const applications = props.value;
 
   const [modalShow, setModalShow] = useState(false);
-  const [application, setApplication] = useState({index: 0, value: setDefaultValue()});
-  const [action, setAction] = useState(ACTION_ADD)
+  const [application, setApplication] = useState({
+    index: 0,
+    value: setDefaultValue()
+  });
+  const [action, setAction] = useState(ACTION_ADD);
+
+  const [showChart, setShowChart] = useState(false);
 
   const onAddClickHandler = () => {
-    setApplication({index: 0, value: setDefaultValue()});
+    setApplication({ index: 0, value: setDefaultValue() });
     setAction(ACTION_ADD);
     setModalShow(true);
   };
-  
+
   const onUpdateClickHandler = () => {
     setAction(ACTION_UPDATE);
     setModalShow(true);
@@ -69,7 +77,7 @@ const Applications = props => {
 
   const onRowClickHandler = (e, row, index) => {
     //Set the application object to the current clicked row
-    const cur_application = {index: index, value: setDefaultValue()};
+    const cur_application = { index: index, value: setDefaultValue() };
 
     let i = 0;
     for (let key in cur_application.value) {
@@ -80,8 +88,7 @@ const Applications = props => {
       setApplication(cur_application);
     } catch (error) {
       console.error(error);
-    }    
-
+    }
   };
 
   const onChangeHandler = e => {
@@ -124,15 +131,14 @@ const Applications = props => {
   };
 
   const onSaveHandler = () => {
-
     let application_arr = Object.values(application.value);
     switch (action) {
       case ACTION_ADD:
-        props.onAdd(application_arr)
+        props.onAdd(application_arr);
         break;
       case ACTION_UPDATE:
-        props.onUpdate(application_arr, application.index)
-        break;    
+        props.onUpdate(application_arr, application.index);
+        break;
       default:
         break;
     }
@@ -140,9 +146,38 @@ const Applications = props => {
   };
 
   const onDeleteHandler = () => {
-    props.onDelete(application.index)
+    props.onDelete(application.index);
 
     setModalShow(false);
+  };
+
+  const onChartClickHandler = () => {
+    setShowChart(!showChart);
+  };
+
+
+  const get6RGroups = () => {
+    var groupData = [];
+    applications.map(value => {
+      if (!groupData[value[6]]) {
+        groupData[value[6]] = 0;
+      }
+      groupData[value[6]] += 1;
+    });
+
+    return groupData;
+  };
+
+
+  const getChartData = () => {
+    var groupData = get6RGroups();
+
+    var chartData = [['6R Hosting', 'Number of Applications']];
+    for (var key in groupData) {
+      chartData.push([key, groupData[key]]);
+    }
+
+    return chartData;
   };
 
   return (
@@ -151,14 +186,21 @@ const Applications = props => {
         heading="Applications:"
         count={applications.length}
         onAdd={onAddClickHandler}
-      />
-      <Grid
-        data={applications}
-        headings={headings}
-        onRowClick={onRowClickHandler}
-        onRowLinkClick={onUpdateClickHandler}
+        onChartClick={onChartClickHandler}
+        ChartButtonText={showChart ? "Grid" : "Chart"}
         isLoading={props.isLoading}
       />
+      {showChart ? (
+        <ApplicationChart data={getChartData()} />
+      ) : (
+        <Grid
+          data={applications}
+          headings={headings}
+          onRowClick={onRowClickHandler}
+          onRowLinkClick={onUpdateClickHandler}
+          isLoading={props.isLoading}
+        />
+      )}
       {/* Modal application only shown when Add and Update */}
       <ApplicationDialog
         show={modalShow}
@@ -169,7 +211,7 @@ const Applications = props => {
         onCancel={() => setModalShow(false)}
         onDelete={onDeleteHandler}
         onSave={onSaveHandler}
-      />      
+      />
     </div>
   );
 };
