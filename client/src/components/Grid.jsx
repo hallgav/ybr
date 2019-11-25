@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Grid.css";
 
-const Grid = ({ headings, data, onRowClick, isLoading }) => {
+const Grid = ({ headings, data, onRowClick, onRowLinkClick, isLoading }) => {
   return (
     <div className="grid-main">
       <table>
@@ -17,7 +17,7 @@ const Grid = ({ headings, data, onRowClick, isLoading }) => {
           {isLoading ? (
             <ShowWaiting size={headings.length} />
           ) : (
-            <ShowGrid value={data} onClick={onRowClick} />
+            <ShowGrid value={data} onClick={onRowClick} onLinkClick={onRowLinkClick}/>
           )}
         </tbody>
       </table>
@@ -37,12 +37,12 @@ const ShowWaiting = props => {
   );
 };
 
-const ShowGrid = ({ value, onClick }) => {
+const ShowGrid = ({ value, onClick, onLinkClick}) => {
   const renderCell = (parent, value, position, rowId) => {
     //The first column is a "key" and has a link hook
     return position === 0 ? (
       <td key={rowId + position} id={position}>
-        <button onClick={e => onClick(e, parent)}>{value}</button>
+        <button onClick={e => onLinkClick(e, parent)}>{value}</button>
       </td>
     ) : (
       <td key={rowId + position}>{value}</td>
