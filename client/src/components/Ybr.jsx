@@ -4,7 +4,7 @@ import SideMenu from "../containers/SideMenu";
 import PageNav from "./PageNav";
 import ApplicationsContainer from "../containers/ApplicationsContainer";
 import ServersContainer from "../containers/ServersContainer";
-import {Button} from "react-bootstrap";
+import {button} from "react-bootstrap";
 
 const Ybr = props => {
   const [selectedAsset, setSelectAsset] = useState("servers");
@@ -23,10 +23,10 @@ const Ybr = props => {
               ASSETS
               <ul id="nav">
                 <li key="1">
-                  <Button id="servers" onClick={onClickHandler}>Servers</Button>
+                  <button id="servers" onClick={onClickHandler}>Servers</button>
                 </li>
                 <li key="2">
-                  <Button id="applications" onClick={onClickHandler}>Applications</Button>
+                  <button id="applications" onClick={onClickHandler}>Applications</button>
                 </li>
               </ul>
             </div>

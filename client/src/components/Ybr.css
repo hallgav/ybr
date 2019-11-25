@@ -26,15 +26,21 @@
   margin-top: 5px;
 }
 
-.ybr-flexbox__panel a {
-  text-decoration: none;
+.ybr-flexbox__panel button {
+  background-color: #333;
   color: white;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: 8px;
-  padding-right: 8px;
+  border: none;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
 }
-.ybr-flex-panel__active {
+.ybr-flexbox__panel button:hover {
   background-color: rgb(75, 73, 73);
   border-radius: 3px;
+}
+
+.ybr-flexbox__panel button:focus:not(.focus-visible) {
+  background-color: rgb(75, 73, 73);
+  border-radius: 3px;
+  box-shadow: none;
+  outline:0;
 }

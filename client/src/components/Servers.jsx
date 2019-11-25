@@ -146,6 +146,7 @@ const Servers = props => {
         headings={headings}
         onRowClick={onRowClickHandler}
         onRowLinkClick={onUpdateClickHandler}
+        isLoading={props.isLoading}
       />
       {/* Modal Server only shown when Add and Update */}
       <ServerDialog

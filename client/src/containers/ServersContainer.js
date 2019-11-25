@@ -4,7 +4,7 @@ import Servers from "../components/Servers"
 
 const ServersContainer = props => {
   
-  const [servers, setServers] = props.value;
+  const [servers, setServers, isServersLoading] = props.value;
 
   const onUpdateHandler = (value, index) => {
     const newServers = [...Servers];
@@ -28,6 +28,7 @@ const ServersContainer = props => {
       onUpdate={onUpdateHandler}
       onDelete={onDeleteHandler}
       onAdd={onAddHandler}
+      isLoading={isServersLoading}
     />
   );
 }

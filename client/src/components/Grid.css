@@ -57,3 +57,27 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.grid-waiting__wrapper{
+  text-align: center;
+  padding: 20px;
+}
+
+.grid-waiting{
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: scale(1) rotate(0deg);
+	}
+	to {
+		transform: scale(1) rotate(360deg);
+	}
+}

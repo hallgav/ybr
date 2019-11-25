@@ -157,6 +157,7 @@ const Applications = props => {
         headings={headings}
         onRowClick={onRowClickHandler}
         onRowLinkClick={onUpdateClickHandler}
+        isLoading={props.isLoading}
       />
       {/* Modal application only shown when Add and Update */}
       <ApplicationDialog

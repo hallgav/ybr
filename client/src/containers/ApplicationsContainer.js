@@ -2,7 +2,7 @@ import React from "react";
 import Applications from "../components/Applications";
 
 const ApplicationsContainer = props => {
-  const [applications, setApplications] = props.value;
+  const [applications, setApplications, isApplicationsLoading] = props.value;
 
   const onUpdateHandler = (value, index) => {
     const newApplications = [...applications];
@@ -26,6 +26,7 @@ const ApplicationsContainer = props => {
       onUpdate={onUpdateHandler}
       onDelete={onDeleteHandler}
       onAdd={onAddHandler}
+      isLoading={isApplicationsLoading}
     />
   );
 };
