@@ -1,31 +1,43 @@
-var controller = require("./controller");
+var config = require("./reference/ui-lists");
 
-exports.servers = async (event) => {
-  let domain = "";
+exports.config = async event => {
+  console.log("in config api");
+  let refId = "";
   try {
     //get ybr parameter value
-    ybrId = event.pathParameters.ybrId;
+    refId = event.pathParameters.refId;
   } catch (error) {
     return {
       statusCode: 400,
       body: JSON.stringify(error, null, 2)
     };
   }
+
+  console.log("got refid   " + refId);
+
   try {
-    data = await controller.getServers(ybrId)
+    var data = {};
+    switch (refId) {
+      case "assesmentStatus":
+        data = config.assesmentStatus;
+        break;
+      case "6R":
+        data = config.sixRs;
+        break;
+      default:
+        throw new Error("Invalid Reference");
+    }
     return {
       statusCode: 200,
       headers: {
-        'Access-Control-Allow-Origin': '*'
+        "Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify(data, null, 2)
     };
-  }   
-  catch (error) {
-    return  {
+  } catch (error) {
+    return {
       statusCode: 400,
       body: JSON.stringify(error, null, 2)
     };
-  
   }
-}
+};

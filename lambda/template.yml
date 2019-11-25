@@ -62,6 +62,20 @@ Resources:
             Path: /ybr/{ybrId}/servers
             Method: GET
   
+  ConfigFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: handler.config
+      Runtime: nodejs10.x
+      CodeUri: ./config
+      Timeout: 300
+      Events:
+        ServersAPI:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /config/reference/{refId}
+            Method: GET  
   # YbrFunction:
   #   Type: 'AWS::Serverless::Function'
   #   Properties:

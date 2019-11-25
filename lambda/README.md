@@ -17,6 +17,10 @@ sam local invoke ApplicationsFunction --event ./test/applications_event.json --t
 Servers Function
 sam local invoke ServersFunction --event ./test/servers_event.json --template template.yml --log-file ./test/sam.log
 
+Config Function
+sam local invoke ConfigFunction --event ./test/config_event.json --template template.yml --log-file ./test/sam.log
+
+
 Hello Function
 sam local invoke HelloFunction --event ./test/applications_event.json --template template.yml --log-file ./test/sam.log
 
