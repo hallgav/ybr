@@ -25,7 +25,7 @@ exports.config = async event => {
         data = config.sixRs;
         break;
       default:
-        throw new Error("Invalid Reference");
+        data = config;
     }
     return {
       statusCode: 200,

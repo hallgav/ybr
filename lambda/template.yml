@@ -1,6 +1,20 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 
+Parameters:
+
+  DBAuroraClusterArn:
+    Description: This will be used to connect to the Aurora serverless DB
+    Type: String
+
+  DBSecretsStoreArn:
+    Description: This will be used to connect to the Aurora serverless DB
+    Type: String
+
+  DatabaseName:
+    Description: This will be used to connect to the Aurora serverless DB
+    Type: String      
+
 Resources:
 
   MyApi:
@@ -31,7 +45,21 @@ Resources:
   #     RoleName: String
   #     Tags: 
   #       - Tag    
-    
+  YbrFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: handler.ybr
+      Runtime: nodejs10.x
+      CodeUri: ./ybr
+      Timeout: 300
+      Events:
+        YbrAPI:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /ybr/{ybrId}
+            Method: GET
+
   ApplicationsFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
@@ -76,20 +104,26 @@ Resources:
             RestApiId: !Ref MyApi
             Path: /config/reference/{refId}
             Method: GET  
-  # YbrFunction:
-  #   Type: 'AWS::Serverless::Function'
-  #   Properties:
-  #     Handler: handler.ybr
-  #     Runtime: nodejs10.x
-  #     CodeUri: ./ybr
-  #     Timeout: 300
-  #     Events:
-  #       YbrAPI:
-  #         Type: Api
-  #         Properties:
-  #           RestApiId: !Ref MyApi
-  #           Path: /ybr/:ybrID
-  #           Method: GET
+           
+  ClientFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: handler.client
+      Environment:
+        Variables:
+          DBSecretsStoreArn: !Ref DBSecretsStoreArn
+          DBAuroraClusterArn: !Ref DBAuroraClusterArn
+          DatabaseName: !Ref DatabaseName
+      Runtime: nodejs10.x
+      CodeUri: ./client
+      Timeout: 500
+      Events:
+        ServersAPI:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /client/{clientId}
+            Method: GET  
 
   HelloFunction:
     Type: 'AWS::Serverless::Function'
